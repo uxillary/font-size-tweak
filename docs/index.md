@@ -13,9 +13,7 @@ A clean, modern utility for Windows 10/11 to **adjust system font sizes** (title
 
 ## 🖼️ Screenshot
 
-<p align="center">
-  <img src="screenshot.png" alt="FontSize Tweak Screenshot" width="300">
-</p>
+![screenshot](screenshot.png)
 
 ---
 

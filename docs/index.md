@@ -2,22 +2,22 @@
 layout: default
 title: Font Size Tweak
 theme: jekyll-theme-minimal
-description: A free Windows tool to customize system font sizes without scaling everything. Dark mode, modern UI, portable.
+description: A lightweight, modern Windows utility for customizing system font sizes.
 ---
 
-# 🪄 FontSize Tweak
+## Font Size Tweak
 
 A clean, modern utility for Windows 10/11 to **adjust system font sizes** (title bars, menus, icons, and more) — no scaling required.
 
 ---
 
-## 🖼️ Screenshot
+## Screenshot
 
 ![screenshot](screenshot.png)
 
 ---
 
-## 🔧 Features
+## Features
 
 - Adjust all system fonts or fine-tune each one:
   - Title Bar
@@ -32,7 +32,7 @@ A clean, modern utility for Windows 10/11 to **adjust system font sizes** (title
 
 ---
 
-## 📥 Download
+## Download
 
 👉 [Download the latest version](https://github.com/uxillary/font-size-tweak/releases)
 
@@ -40,7 +40,7 @@ A clean, modern utility for Windows 10/11 to **adjust system font sizes** (title
 
 ---
 
-## ⚙️ How It Works
+## How It Works
 
 FontSize Tweak edits Windows registry font settings under:
 ```
@@ -51,13 +51,13 @@ Built with Python + ttkbootstrap and packaged with PyInstaller.
 
 ---
 
-## ☕ Support the Developer
+## Support the Developer
 
 If this tool helped your eyes (or your nan’s), consider [buying me a coffee](https://coff.ee/admjski).
 
 ---
 
-## 🛠️ License
+## License
 
 MIT License – use it, remix it, and share it.
 

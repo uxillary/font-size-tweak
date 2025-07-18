@@ -1,0 +1,32 @@
+# Bytecode + cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# VS Code / PyCharm project settings
+.vscode/
+.idea/
+
+# System junk
+.DS_Store
+Thumbs.db
+
+# Packaging output
+build/
+dist/
+*.spec
+
+# Installer & executables
+*.exe
+*.msi
+
+# Virtual environments
+venv/
+.env/
+
+# Logs
+*.log
+
+# Misc
+*.bak
+*.old

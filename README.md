@@ -8,7 +8,7 @@ Built with Python + ttkbootstrap, fully open-source and packaged as a portable `
 
 ## 💾 Download
 
-➡ [**Download the latest version**](https://github.com/YOUR_USERNAME/font-size-tweak/releases/latest/download/FontSizeTweak-v1.0.zip)
+➡ [**Download the latest version**](https://github.com/uxillary/font-size-tweak/releases/tag/v1.0.0)
 
 Just run the EXE — no installer needed.  
 > ⚠️ You may need to **log out and back in** for changes to fully apply.

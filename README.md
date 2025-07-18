@@ -66,4 +66,4 @@ Use it, fork it, remix it — just give credit.
 ## 👤 Author
 
 **Adam Johnston**  
-[GitHub](https://github.com/admjski)
+[GitHub](https://github.com/uxillary)

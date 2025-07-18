@@ -2,35 +2,65 @@
 layout: default
 title: FontSize Tweak
 theme: jekyll-theme-minimal
-description: A lightweight, modern Windows utility for customizing system font sizes.
+description: A free Windows tool to customize system font sizes without scaling everything. Dark mode, modern UI, portable.
 ---
 
-# FontSize Tweak
+# 🪄 FontSize Tweak
 
-> A free utility to change Windows system UI font sizes without scaling your whole desktop.
-
-![screenshot](screenshot.png)
-
-- 🔧 Customize title bars, menus, icons, and more
-- 🌒 Clean dark mode UI with modern look
-- 🔁 No full DPI scaling — just font size
-- 💾 Open source & portable
-
-[Download latest release](https://github.com/uxillary/font-size-tweak/releases)
+A clean, modern utility for Windows 10/11 to **adjust system font sizes** (title bars, menus, icons, and more) — no scaling required.
 
 ---
 
-## Features
+## 🖼️ Screenshot
 
-- Quick global font size adjustments
-- Fine-tune individual font settings
-- Built with Python & ttkbootstrap
-- Registry-safe editing
-- Simple UI with preview & reset
+<p align="center">
+  <img src="screenshot.png" alt="FontSize Tweak Screenshot" width="300">
+</p>
 
 ---
 
-## Support the Developer ☕
+## 🔧 Features
 
-If this tool helped you, consider [buying me a coffee](https://coff.ee/admjski)!
+- Adjust all system fonts or fine-tune each one:
+  - Title Bar
+  - Menu
+  - Message Box
+  - Icon
+  - Status Bar
+- Live preview + current font size detection
+- Dark mode interface with accessible design
+- Portable `.exe` – no install required
+- One-click reset to defaults
 
+---
+
+## 📥 Download
+
+👉 [Download the latest version](https://github.com/uxillary/font-size-tweak/releases)
+
+> ⚠️ You may need to **log out and back in** for changes to take effect.
+
+---
+
+## ⚙️ How It Works
+
+FontSize Tweak edits Windows registry font settings under:
+```
+HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics
+```
+
+Built with Python + ttkbootstrap and packaged with PyInstaller.
+
+---
+
+## ☕ Support the Developer
+
+If this tool helped your eyes (or your nan’s), consider [buying me a coffee](https://coff.ee/admjski).
+
+---
+
+## 🛠️ License
+
+MIT License – use it, remix it, and share it.
+
+Made by [@admjski](https://github.com/uxillary)

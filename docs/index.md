@@ -1,6 +1,6 @@
 ---
 layout: default
-title: FontSize Tweak
+title: Font Size Tweak
 theme: jekyll-theme-minimal
 description: A free Windows tool to customize system font sizes without scaling everything. Dark mode, modern UI, portable.
 ---

@@ -43,6 +43,7 @@ A clean, modern utility for Windows 10/11 to **adjust system font sizes** (title
 ## How It Works
 
 FontSize Tweak edits Windows registry font settings under:
+
 ```
 HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics
 ```

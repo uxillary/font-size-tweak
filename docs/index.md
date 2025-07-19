@@ -1,3 +1,10 @@
+---
+layout: default
+title: Font Size Tweak
+theme: jekyll-theme-minimal
+description: A lightweight, modern Windows utility for customizing system font sizes.
+---
+
 <!-- SEO Meta Tags -->
 <meta name="description" content="FontSize Tweak is a free Windows tool to customize system font sizes like menu, title bar, and icon text without using display scaling.">
 <meta name="keywords" content="change font size windows, windows ui font size, accessibility font tool, windows menu font size, fix small text windows 11, increase font size windows, windows tweak tool">
@@ -15,13 +22,6 @@
 <meta name="twitter:title" content="FontSize Tweak – Resize Windows Fonts Without Scaling">
 <meta name="twitter:description" content="Free Windows app to resize system fonts (title bar, icon text, menu) without scaling everything. Dark mode included.">
 <meta name="twitter:image" content="https://uxillary.github.io/font-size-tweak/screenshot.png">
-
----
-layout: default
-title: Font Size Tweak
-theme: jekyll-theme-minimal
-description: A lightweight, modern Windows utility for customizing system font sizes.
----
 
 ## Font Size Tweak
 

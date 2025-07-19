@@ -44,9 +44,7 @@ A clean, modern utility for Windows 10/11 to **adjust system font sizes** (title
 
 FontSize Tweak edits Windows registry font settings under:
 
-```
-HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics
-```
+"HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics"
 
 Built with Python + ttkbootstrap and packaged with PyInstaller.
 

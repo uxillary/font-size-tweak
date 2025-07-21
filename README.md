@@ -4,11 +4,11 @@ A clean, dark-mode-friendly Windows utility to **tweak system font sizes** — n
 
 Built with Python + ttkbootstrap, fully open-source and packaged as a portable `.exe`.
 
+➡ [**View Github Page**](https://uxillary.github.io/font-size-tweak/)
 ---
 
-## 💾 Download
-
-➡ [**Download the latest version**](https://github.com/uxillary/font-size-tweak/releases/tag/v1.0.0)
+➡ [**💾 Download the latest version**](https://github.com/uxillary/font-size-tweak/releases/tag/v1.0.0)
+---
 
 Just run the EXE — no installer needed.  
 > ⚠️ You may need to **log out and back in** for changes to fully apply.
@@ -66,4 +66,10 @@ Use it, fork it, remix it — just give credit.
 ## 👤 Author
 
 **Adam Johnston**  
-[GitHub](https://github.com/uxillary)
+- [GitHub](https://github.com/uxillary)
+- [Hub](https://adamj.link)
+- [Portfolio](https://ajstudios.dev)
+- [Blog](https://infinitecurios.blog)
+
+
+

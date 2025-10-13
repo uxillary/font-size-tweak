@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://uxillary.github.io/font-size-tweak/sitemap.xml

@@ -1,75 +1,42 @@
-# 🪄 FontSize Tweak
+# Font Size Tweak
 
-A clean, dark-mode-friendly Windows utility to **tweak system font sizes** — no scaling, no DPI mess, just better readability.
+[![Licence: MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE) [![GitHub release](https://img.shields.io/github/v/release/uxillary/font-size-tweak?sort=semver)](https://github.com/uxillary/font-size-tweak/releases/latest)
 
-Built with Python + ttkbootstrap, fully open-source and packaged as a portable `.exe`.
+Font Size Tweak is a free, portable Windows 11/10 utility that lets you change Windows system font size without scaling. Adjust title bar, menus, icons, message boxes, and status bar text independently while keeping everything crisp.
 
-➡ [**View Github Page**](https://uxillary.github.io/font-size-tweak/)
----
+## Features
 
-➡ [**💾 Download the latest version**](https://github.com/uxillary/font-size-tweak/releases/tag/v1.0.0)
----
+- Change Windows system font size per element or all at once
+- Live preview before committing registry values
+- Dark mode interface with manual override
+- Portable executable (no installation or admin rights required)
+- One-click reset to Microsoft defaults
+- Open-source MIT licence and free forever
 
-Just run the EXE — no installer needed.  
-> ⚠️ You may need to **log out and back in** for changes to fully apply.
+## How it works
 
----
+Font Size Tweak updates the registry keys under `HKCU\Control Panel\Desktop\WindowMetrics`, matching the same locations Windows uses internally. The app is transparent about every value and does not ship with telemetry or background services.
 
-## ✨ Features
+## Download
 
-- 🧩 Per-font control (Title, Menu, MessageBox, Icon, Status)
-- 🎛️ Quick apply to all fonts at once
-- 🔍 Live preview + current font size detection
-- 🌙 Dark mode interface with accessibility in mind
-- 🧊 Portable `.exe` — no install, no background process
+Get the latest release from GitHub and verify the checksum provided in the notes:
 
----
+- 👉 [Download Font Size Tweak (latest)](https://github.com/uxillary/font-size-tweak/releases/latest)
 
-## 🧪 Developer Stuff
+No installer is required; simply run the executable.
 
-### Run it:
+## Privacy &amp; safety
 
-```bash
-pip install ttkbootstrap
-python main.py
-```
+- 100% offline, no network calls, and no cookies.
+- Source code is open for review.
+- Reset option restores Windows defaults instantly.
 
-### Build it (PyInstaller):
+## Troubleshooting
 
-```bash
-pyinstaller main.py --onefile --windowed --icon=icon.ico --name FontSizeTweak --add-data "icon.ico;."
-```
+- Some apps cache metrics, so sign out and back in after big adjustments.
+- If fonts look wrong, use the reset control or restore a registry backup.
 
----
+## Support
 
-## 📸 Screenshot
-
-![FontSize Tweak Preview](assets/screenshot.png)
-
----
-
-## ☕ Support
-
-If this helped your eyeballs or your nan,  
-consider fueling my next idea:  
-[https://coff.ee/admjski](https://coff.ee/admjski)
-
----
-
-## 🛠️ License
-
-MIT License.  
-Use it, fork it, remix it — just give credit.
-
----
-
-## 👤 Author
-
-**Adam Johnston**  
-- [GitHub](https://github.com/uxillary)
-- [Hub](https://adamj.link)
-- [Portfolio](https://ajstudios.dev)
-- [Blog](https://infinitecurios.blog)
-
-
-
+- Report issues or request features via [GitHub Issues](https://github.com/uxillary/font-size-tweak/issues).
+- Sponsor development on [Buy Me a Coffee](https://www.buymeacoffee.com/uxillary).

@@ -1,6 +1,7 @@
 # Font Size Tweak
 
-[![Licence: MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE) [![GitHub release](https://img.shields.io/github/v/release/uxillary/font-size-tweak?sort=semver)](https://github.com/uxillary/font-size-tweak/releases/latest)
+[![Licence: MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE) [![GitHub release](https://img.shields.io/github/v/release/uxillary/font-size-tweak?sort=semver)](https://github.com/uxillary/font-size-tweak/releases/latest) [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-live-brightgreen)](https://uxillary.github.io/font-size-tweak/)
+
 
 Font Size Tweak is a free, portable Windows 11/10 utility that lets you change Windows system font size without scaling. Adjust title bar, menus, icons, message boxes, and status bar text independently while keeping everything crisp.
 

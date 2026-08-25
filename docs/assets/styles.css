@@ -75,7 +75,7 @@ h3 { font-size: 1.18rem; }
 .stats-grid i { position: absolute; left: 0; top: .42rem; color: var(--accent); font-size: .82rem; }
 .stats-grid > div:nth-child(even) i { color: var(--blue); }
 .stats-grid strong, .stats-grid span { display: block; }
-.stats-grid strong { font-size: 1.15rem; line-height: 1.35; }
+.stats-grid strong { min-height: 1.55rem; font-size: 1.15rem; line-height: 1.35; }
 .stats-grid span { color: var(--muted); font-size: .76rem; }
 .section { padding: clamp(4rem, 8vw, 7rem) 0; }
 .compact { padding: 3rem 0; }
@@ -124,6 +124,8 @@ h3 { font-size: 1.18rem; }
 .support { padding: 3rem 0; border-top: 1px solid var(--border); }
 .support h2 { font-size: 1.4rem; margin-bottom: .25rem; }
 .support p, footer p { color: var(--muted); margin: 0; font-size: .9rem; }
+.support p { max-width: 560px; }
+.star-button__count { display: inline-block; color: var(--muted); min-width: 4ch; }
 .coffee { background: #ffdd00; color: #211c00; border: 0; }
 .text-link { font-size: .9rem; }
 footer { padding: 2rem 0; background: #080d0b; border-top: 1px solid var(--border); }

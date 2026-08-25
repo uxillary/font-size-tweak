@@ -1,418 +1,132 @@
-<!DOCTYPE html>
-<html lang="en-GB" class="no-js">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Font Size Tweak — Free Windows tool to change system font sizes (Windows 10/11)</title>
-  <meta name="description" content="Font Size Tweak is a free, portable Windows 10/11 utility to change system font sizes (title bar, menus, icons, message boxes, status bar) without using display scaling. Dark mode, live preview, one-click reset." />
-  <link rel="canonical" href="https://uxillary.github.io/font-size-tweak/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Font Size Tweak — Free Windows tool to change system font sizes (Windows 10/11)" />
-  <meta property="og:description" content="Font Size Tweak is a free, portable Windows 10/11 utility to change system font sizes without display scaling." />
-  <meta property="og:url" content="https://uxillary.github.io/font-size-tweak/" />
-  <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'%3E%3Crect width='1200' height='630' fill='%232563eb'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-family='Segoe UI' font-size='72' text-anchor='middle'%3EFont%20Size%20Tweak%3C/text%3E%3Ctext x='50%25' y='60%25' fill='white' font-family='Segoe UI' font-size='32' text-anchor='middle'%3EChange%20Windows%20font%20size%20without%20scaling%3C/text%3E%3C/svg%3E" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Font Size Tweak — Free Windows font size utility" />
-  <meta name="twitter:description" content="Change Windows 11/10 system font size without scaling. Portable, free alternative to Advanced System Font Changer." />
-  <meta name="twitter:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'%3E%3Crect width='1200' height='630' fill='%232563eb'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-family='Segoe UI' font-size='72' text-anchor='middle'%3EFont%20Size%20Tweak%3C/text%3E%3Ctext x='50%25' y='60%25' fill='white' font-family='Segoe UI' font-size='32' text-anchor='middle'%3EChange%20Windows%20font%20size%20without%20scaling%3C/text%3E%3C/svg%3E" />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
-  <link rel="alternate" hreflang="en" href="https://uxillary.github.io/font-size-tweak/" />
-  <link rel="alternate" hreflang="en-gb" href="https://uxillary.github.io/font-size-tweak/" />
-  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://github.com" crossorigin />
-  <link rel="stylesheet" href="assets/styles.css" />
-  <script>document.documentElement.classList.remove('no-js');</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Font Size Tweak – Change Windows 11 Font Size Without Scaling</title>
+  <meta name="description" content="A free, open-source Windows 10 and 11 utility for changing File Explorer, menu, icon and other system UI font sizes without increasing display scaling.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#101513">
+  <link rel="canonical" href="https://uxillary.github.io/font-size-tweak/">
+  <link rel="icon" href="icon.ico" sizes="any">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="assets/styles.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Font Size Tweak">
+  <meta property="og:title" content="Font Size Tweak – Change Windows 11 Font Size Without Scaling">
+  <meta property="og:description" content="Make Windows text easier to read without scaling everything. Free, portable and open source.">
+  <meta property="og:url" content="https://uxillary.github.io/font-size-tweak/">
+  <meta property="og:image" content="https://uxillary.github.io/font-size-tweak/font-size-tweak-windows-interface.png">
+  <meta property="og:image:width" content="557">
+  <meta property="og:image:height" content="911">
+  <meta property="og:image:alt" content="Font Size Tweak Windows font-size settings interface">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Font Size Tweak – Change Windows text without scaling">
+  <meta name="twitter:description" content="A free, portable Windows 10 and 11 font-size utility.">
+  <meta name="twitter:image" content="https://uxillary.github.io/font-size-tweak/font-size-tweak-windows-interface.png">
+  <script type="application/ld+json" id="software-schema">
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Font Size Tweak","applicationCategory":"UtilitiesApplication","operatingSystem":"Windows 10, Windows 11","description":"A free, portable utility for adjusting supported Windows system font metrics without changing display scaling.","url":"https://uxillary.github.io/font-size-tweak/","codeRepository":"https://github.com/uxillary/font-size-tweak","license":"https://github.com/uxillary/font-size-tweak/blob/main/LICENSE","author":{"@type":"Organization","name":"uxillary","url":"https://github.com/uxillary"},"downloadUrl":"https://github.com/uxillary/font-size-tweak/releases/latest","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"How do I make File Explorer text bigger in Windows 11?","acceptedAnswer":{"@type":"Answer","text":"Open Font Size Tweak, increase the Icon font metric, apply the change, then sign out and back in if Explorer does not refresh immediately."}},
+    {"@type":"Question","name":"Can I increase Windows text size without changing display scaling?","acceptedAnswer":{"@type":"Answer","text":"Yes. Font Size Tweak changes supported system font metrics while leaving Windows display scaling unchanged."}},
+    {"@type":"Question","name":"How do I make Windows menu text larger?","acceptedAnswer":{"@type":"Answer","text":"Use the Quick Apply control for all supported metrics or adjust Menu individually in Advanced controls."}},
+    {"@type":"Question","name":"Does Font Size Tweak work on Windows 10 and Windows 11?","acceptedAnswer":{"@type":"Answer","text":"Yes. Font Size Tweak is intended for Windows 10 and Windows 11, although results can differ between components and Windows builds."}},
+    {"@type":"Question","name":"Does Font Size Tweak require administrator access?","acceptedAnswer":{"@type":"Answer","text":"No. It changes settings for the current Windows user and does not require administrator access."}},
+    {"@type":"Question","name":"Why doesn't every Windows dialog change size?","acceptedAnswer":{"@type":"Answer","text":"Not every interface uses the classic Windows font metrics. Newer or custom-rendered components may ignore them."}},
+    {"@type":"Question","name":"Is Font Size Tweak free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The application is free to download and use under the MIT licence."}},
+    {"@type":"Question","name":"Is Font Size Tweak open source?","acceptedAnswer":{"@type":"Answer","text":"Yes. Its source code is public on GitHub and can be inspected before running the executable."}},
+    {"@type":"Question","name":"How do I restore the original Windows font sizes?","acceptedAnswer":{"@type":"Answer","text":"Use the reset function in Font Size Tweak, then sign out and back in if needed to refresh the interface."}},
+    {"@type":"Question","name":"Is this an alternative to Advanced System Font Changer?","acceptedAnswer":{"@type":"Answer","text":"It is a lightweight, open-source option for adjusting the supported Windows font metrics. Feature sets may differ, so choose the tool that fits your needs."}}
+  ]}
+  </script>
 </head>
-<body id="top">
+<body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header" role="banner">
-    <div class="container header-content">
-      <a class="brand" href="#top" aria-label="Font Size Tweak home">
-        <img src="assets/logo.svg" alt="Font Size Tweak logo" width="40" height="40" />
-        <span>Font Size Tweak</span>
-      </a>
-      <nav aria-label="Primary">
-        <ul class="nav-list">
-          <li><a href="#features">Features</a></li>
-          <li><a href="#how-it-works">How it works</a></li>
-          <li><a href="#comparison">Free alternative</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#download">Download</a></li>
-        </ul>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="Font Size Tweak home"><img src="assets/logo.svg" width="36" height="36" alt=""><span>Font Size Tweak</span></a>
+      <nav aria-label="Primary navigation">
+        <a href="#features">Features</a><a href="#versions">Versions</a><a href="#faq">FAQ</a><a class="nav-github" href="https://github.com/uxillary/font-size-tweak">GitHub</a>
       </nav>
-      <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Toggle colour theme (current: Light theme)">
-        <span class="theme-toggle__icon" aria-hidden="true"></span>
-        <span class="theme-toggle__label">Light theme</span>
-      </button>
     </div>
   </header>
-  <main id="main" class="site-main" role="main">
-    <section id="hero" class="hero" aria-labelledby="hero-title">
-      <div class="container hero__layout">
-        <div class="hero__content">
-          <h1 id="hero-title">Change Windows system font sizes without scaling</h1>
-          <p class="hero__intro">Font Size Tweak is a free Windows 11/10 utility for adjusting title bar, menu, message box, icon, and status bar font size without touching display scaling.</p>
-          <ul class="hero__list">
-            <li>Windows 10/11 support</li>
-            <li>Portable .exe (no install)</li>
-            <li>Dark mode friendly</li>
-            <li>Live preview + one-click reset</li>
-          </ul>
-          <div class="hero__cta">
-            <a class="button button--primary" href="https://github.com/uxillary/font-size-tweak/releases/latest">Download (Free)</a>
-            <a class="button button--ghost" href="https://github.com/uxillary/font-size-tweak">View on GitHub</a>
-          </div>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="product-mark"><img src="assets/logo.svg" width="54" height="54" alt="Font Size Tweak icon"><span>Font Size Tweak</span></div>
+          <h1>Make Windows text easier to read <span>— without scaling everything.</span></h1>
+          <p class="lede">A focused, portable utility for adjusting supported Windows UI fonts—including File Explorer labels, menus and title bars—while leaving display scaling alone.</p>
+          <div class="actions"><a class="button primary js-latest-download" href="https://github.com/uxillary/font-size-tweak/releases/latest">Download latest</a><a class="button secondary" href="https://github.com/uxillary/font-size-tweak">View on GitHub</a></div>
+          <ul class="trust" aria-label="Project details"><li>Windows 10 / 11</li><li>Portable</li><li>Open source</li><li>MIT</li><li>No admin required</li></ul>
         </div>
-        <div class="hero__visual" aria-hidden="true">
-          <img class="hero__screenshot" src="screenshot.png" alt="" width="480" height="320" />
+        <figure class="app-shot"><div class="window-bar"><i></i><i></i><i></i><span>Font Size Tweak</span></div><img src="font-size-tweak-windows-interface.png" width="557" height="911" alt="Font Size Tweak Windows font-size settings interface"></figure>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Live GitHub project statistics">
+      <div class="container stats-grid">
+        <div><strong id="downloads">—</strong><span>Total downloads</span></div><div><strong id="stars">—</strong><span>GitHub stars</span></div><div><strong id="latest-version">Latest release</strong><span>Version</span></div><div><strong id="release-date">Available now</strong><span>Released</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="container"><p class="eyebrow">Simple by design</p><h2>Change the text that matters</h2><p class="section-intro">Tune supported font metrics together or individually, with a clear preview before you apply.</p>
+        <div class="feature-grid">
+          <article><span class="feature-icon">Aa</span><h3>Everyday interface text</h3><p>Adjust Explorer file and icon labels, menus, title bars, message and dialog font metrics, and status bar fonts.</p></article>
+          <article><span class="feature-icon">↗</span><h3>Quick Apply</h3><p>Change all supported font metrics together when you want a consistent size across the Windows interface.</p></article>
+          <article><span class="feature-icon">☷</span><h3>Advanced control</h3><p>Fine-tune individual metrics with current-size detection and a live font preview.</p></article>
+          <article><span class="feature-icon">↺</span><h3>Easy to reverse</h3><p>Use the built-in reset functionality whenever you want to return the supported settings to their defaults.</p></article>
         </div>
       </div>
     </section>
 
-    <section id="features" class="feature-grid" aria-labelledby="features-title">
-      <div class="container">
-        <h2 id="features-title">Features built for clarity</h2>
-        <div class="feature-grid__items">
-          <article class="feature-card">
-            <h3>Adjust all or per-element</h3>
-            <p>Set custom font sizes globally or fine-tune title bar, menu, icon, message box, and status bar text individually.</p>
-          </article>
-          <article class="feature-card">
-            <h3>Live preview</h3>
-            <p>See changes instantly before writing to the registry, so you can dial in the perfect Windows font size.</p>
-          </article>
-          <article class="feature-card">
-            <h3>Dark mode ready</h3>
-            <p>Automatic theme adapts to your Windows appearance, with manual override if you prefer.</p>
-          </article>
-          <article class="feature-card">
-            <h3>Portable (no install)</h3>
-            <p>Carry the executable on a USB drive. No setup, no admin rights, nothing left behind.</p>
-          </article>
-          <article class="feature-card">
-            <h3>Reset to defaults</h3>
-            <p>Restore Microsoft defaults with one click to undo experiments instantly.</p>
-          </article>
-          <article class="feature-card">
-            <h3>Current size detection</h3>
-            <p>Reads existing values so you always know your starting point before making a change.</p>
-          </article>
+    <section class="section muted">
+      <div class="container split"><div><p class="eyebrow">A more precise option</p><h2>Larger text, not a larger everything</h2></div><div><p>Small Windows text can be uncomfortable on high-DPI displays. You may want to make File Explorer text bigger, increase Windows menu font size, or improve UI legibility without moving the entire interface to 125% or 150% scaling.</p><p>Display scaling can enlarge controls, spacing and windows that were already comfortable. Font Size Tweak instead focuses on supported Windows 10 and Windows 11 system font metrics, giving you a narrower adjustment for easier-to-read text.</p></div></div>
+    </section>
+
+    <section class="section" id="versions">
+      <div class="container"><p class="eyebrow">Downloads</p><h2>Versions</h2><p class="section-intro">Download the newest portable release, or choose an earlier version. Release information updates from GitHub when available.</p>
+        <div class="versions-grid">
+          <article class="release latest"><div><span class="label">Latest</span><h3 id="release-title">Latest release</h3><p id="release-meta">Available from GitHub Releases</p></div><div class="release-actions"><a id="release-download" class="button primary" href="https://github.com/uxillary/font-size-tweak/releases/latest">Download</a><a id="release-notes" href="https://github.com/uxillary/font-size-tweak/releases/latest">Changelog ↗</a></div></article>
+          <div class="previous"><h3>Previous versions</h3><div id="previous-releases"><article class="release"><div><h4>v1.0.0</h4><p>Legacy release</p></div><a href="https://github.com/uxillary/font-size-tweak/releases/tag/v1.0.0">Release &amp; download ↗</a></article></div></div>
         </div>
       </div>
     </section>
 
-    <section id="how-it-works" class="how" aria-labelledby="how-title">
-      <div class="container">
-        <h2 id="how-title">How Font Size Tweak works</h2>
-        <p>Font Size Tweak updates the same registry keys that Windows uses for interface text: <code>HKCU\Control Panel\Desktop\WindowMetrics</code>. The application writes the values when you apply them, and this website never touches your registry.</p>
-        <p>For best results after changing Windows system font size without scaling, sign out and back in so apps refresh their typography.</p>
-      </div>
+    <section class="section muted" id="how-it-works">
+      <div class="container technical-grid"><div><p class="eyebrow">Under the hood</p><h2>How it works</h2><p>Font Size Tweak changes supported font metrics stored for your user account under:</p><code>HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics</code></div><div class="note"><h3>Careful, targeted changes</h3><p>The tool preserves the existing registry font data and adjusts the relevant font-size metric. It does not change global display scaling.</p><p>Some Windows UI elements do not use these legacy system font metrics, so they may not respond.</p></div></div>
     </section>
 
-    <section id="comparison" class="comparison" aria-labelledby="comparison-title">
-      <div class="container">
-        <h2 id="comparison-title">Free Alternative to Advanced System Font Changer</h2>
-        <p>Font Size Tweak offers the essential controls you need to manage Windows 11/10 font sizing with a lightweight, open-source approach. It provides a familiar workflow without the cost or extra components of commercial tools.</p>
-        <div class="table-wrapper" role="region" aria-live="polite" aria-label="Feature comparison table">
-          <table>
-            <caption class="sr-only">Font Size Tweak compared to Advanced System Font Changer</caption>
-            <thead>
-              <tr>
-                <th scope="col">Feature</th>
-                <th scope="col">Font Size Tweak (Free)</th>
-                <th scope="col">Advanced System Font Changer</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Per-element font sizing</th>
-                <td>Yes</td>
-                <td>Yes</td>
-              </tr>
-              <tr>
-                <th scope="row">Live preview</th>
-                <td>Yes</td>
-                <td>Limited</td>
-              </tr>
-              <tr>
-                <th scope="row">Portable</th>
-                <td>Yes</td>
-                <td>Yes</td>
-              </tr>
-              <tr>
-                <th scope="row">Dark mode</th>
-                <td>Yes</td>
-                <td>Varies</td>
-              </tr>
-              <tr>
-                <th scope="row">Open licence (MIT)</th>
-                <td>Yes</td>
-                <td>Proprietary</td>
-              </tr>
-              <tr>
-                <th scope="row">Price</th>
-                <td>Free</td>
-                <td>Free / Pro options</td>
-              </tr>
-              <tr>
-                <th scope="row">Windows 10/11 support</th>
-                <td>Full</td>
-                <td>Yes</td>
-              </tr>
-              <tr>
-                <th scope="row">Reset to defaults</th>
-                <td>Yes</td>
-                <td>Yes</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="section-cta">
-          <a class="button button--primary" href="https://github.com/uxillary/font-size-tweak/releases/latest">Download Font Size Tweak (Free)</a>
+    <section class="section compact"><div class="container limitation"><div class="feature-icon">i</div><div><h2>Known limitations</h2><p>Windows does not expose every UI font through classic metrics. Newer or differently rendered interfaces may ignore these settings, and results vary between components and Windows builds. Signing out and back in may be required for a complete refresh.</p></div></div></section>
+
+    <section class="section" id="faq">
+      <div class="container narrow"><p class="eyebrow">Helpful answers</p><h2>Frequently asked questions</h2>
+        <div class="faq-list">
+          <details><summary>How do I make File Explorer text bigger in Windows 11?</summary><p>Open Font Size Tweak, increase the Icon font metric, apply the change, then sign out and back in if Explorer does not refresh immediately.</p></details>
+          <details><summary>Can I increase Windows text size without changing display scaling?</summary><p>Yes. Font Size Tweak changes supported system font metrics while leaving Windows display scaling unchanged.</p></details>
+          <details><summary>How do I make Windows menu text larger?</summary><p>Use the Quick Apply control for all supported metrics or adjust Menu individually in Advanced controls.</p></details>
+          <details><summary>Does Font Size Tweak work on Windows 10 and Windows 11?</summary><p>Yes. Font Size Tweak is intended for Windows 10 and Windows 11, although results can differ between components and Windows builds.</p></details>
+          <details><summary>Does Font Size Tweak require administrator access?</summary><p>No. It changes settings for the current Windows user and does not require administrator access.</p></details>
+          <details><summary>Why doesn't every Windows dialog change size?</summary><p>Not every interface uses the classic Windows font metrics. Newer or custom-rendered components may ignore them.</p></details>
+          <details><summary>Is Font Size Tweak free?</summary><p>Yes. The application is free to download and use under the MIT licence.</p></details>
+          <details><summary>Is Font Size Tweak open source?</summary><p>Yes. Its source code is public on GitHub and can be inspected before running the executable.</p></details>
+          <details><summary>How do I restore the original Windows font sizes?</summary><p>Use the reset function in Font Size Tweak, then sign out and back in if needed to refresh the interface.</p></details>
+          <details><summary>Is this an alternative to Advanced System Font Changer?</summary><p>It is a lightweight, open-source option for adjusting the supported Windows font metrics. Feature sets may differ, so choose the tool that fits your needs.</p></details>
         </div>
       </div>
     </section>
 
-    <section id="use-cases" class="use-cases" aria-labelledby="use-title">
-      <div class="container">
-        <h2 id="use-title">Built for everyday scenarios</h2>
-        <div class="use-cases__grid">
-          <article class="use-card">
-            <h3>Accessibility &amp; eye strain</h3>
-            <p>Increase menu and message box text so it is comfortable to read during long sessions.</p>
-          </article>
-          <article class="use-card">
-            <h3>High-DPI laptops</h3>
-            <p>Fine-tune font size for crisp UI elements without touching display scaling.</p>
-          </article>
-          <article class="use-card">
-            <h3>Presentations &amp; demos</h3>
-            <p>Make title bar text readable on projectors and recordings.</p>
-          </article>
-          <article class="use-card">
-            <h3>Large displays</h3>
-            <p>Balance icon and status bar text for deskside monitors or conference rooms.</p>
-          </article>
-          <article class="use-card">
-            <h3>Family &amp; elderly setups</h3>
-            <p>Offer a more legible Windows interface for relatives without altering scaling.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+    <section class="section open-source"><div class="container split"><div><p class="eyebrow">Open by default</p><h2>Free and open source</h2><p>Font Size Tweak is released under the MIT licence. You can inspect the code before running the executable, report a problem, or contribute an improvement.</p></div><div class="link-card"><a href="https://github.com/uxillary/font-size-tweak">Source code <span>↗</span></a><a href="https://github.com/uxillary/font-size-tweak/issues">GitHub issues <span>↗</span></a><a href="https://github.com/uxillary/font-size-tweak/releases">All releases <span>↗</span></a><a href="https://github.com/uxillary/font-size-tweak/blob/main/LICENSE">MIT licence <span>↗</span></a></div></div></section>
 
-    <section id="faq" class="faq" aria-labelledby="faq-title">
-      <div class="container">
-        <h2 id="faq-title">Frequently asked questions</h2>
-        <div class="faq__items">
-          <details>
-            <summary>Does this replace display scaling?</summary>
-            <p>No. Font Size Tweak lets you change Windows system font size for individual interface elements without altering your global display scaling setting.</p>
-          </details>
-          <details>
-            <summary>Which Windows versions are supported?</summary>
-            <p>The tool targets Windows 11 and Windows 10 desktop releases. Earlier versions may partially work but are not officially supported.</p>
-          </details>
-          <details>
-            <summary>Is it portable and safe to use?</summary>
-            <p>Yes. The executable is portable, digitally unsigned, and open source. It writes only to <code>HKCU\Control Panel\Desktop\WindowMetrics</code> when you apply changes.</p>
-          </details>
-          <details>
-            <summary>Do I need to restart or sign out/in?</summary>
-            <p>Most tweaks apply immediately, but we recommend signing out and back in to ensure every application recognises the new font size.</p>
-          </details>
-          <details>
-            <summary>Can I revert to defaults?</summary>
-            <p>Absolutely. Use the reset button to restore Microsoft defaults for every element.</p>
-          </details>
-          <details>
-            <summary>How is this different from Advanced System Font Changer?</summary>
-            <p>Font Size Tweak focuses on core Windows font controls with an MIT licence, dark mode interface, and zero-cost download. Advanced System Font Changer offers similar controls with commercial add-ons.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section id="changelog" class="changelog" aria-labelledby="changelog-title">
-      <div class="container">
-        <h2 id="changelog-title">Changelog highlights</h2>
-        <p>See full details on the <a href="https://github.com/uxillary/font-size-tweak/releases">GitHub Releases page</a>.</p>
-        <ol class="changelog__list">
-          <li><strong>v1.0.2</strong> — Updated live preview responsiveness and added dark mode polish.</li>
-          <li><strong>v1.0.1</strong> — Improved registry detection and message box defaults.</li>
-          <li><strong>v1.0.0</strong> — Initial public release with per-element font controls.</li>
-        </ol>
-      </div>
-    </section>
-
-    <section id="download" class="download" aria-labelledby="download-title">
-      <div class="container">
-        <h2 id="download-title">Download &amp; start adjusting</h2>
-        <p>Grab the portable executable (no installer) and verify the checksum from the release notes before use.</p>
-        <div class="download__cta">
-          <a class="button button--primary" href="https://github.com/uxillary/font-size-tweak/releases/latest">Download Font Size Tweak (Free)</a>
-        </div>
-        <p class="download__note">No installer, no telemetry. Launch the app, adjust your Windows 11/10 font size, apply, and sign out/in if prompted.</p>
-      </div>
-    </section>
-
-    <section id="support" class="support" aria-labelledby="support-title">
-      <div class="container">
-        <h2 id="support-title">Support &amp; sponsor</h2>
-        <p>If Font Size Tweak helps you change Windows system font size without scaling, consider supporting ongoing development.</p>
-        <div class="support__cards">
-          <article class="support__card support__card--sponsor">
-            <div class="support__card-header">
-              <span class="support__icon" aria-hidden="true">☕</span>
-              <h3>Buy me a coffee</h3>
-            </div>
-            <p>Keep the project moving with a one-time or recurring contribution.</p>
-            <a class="button button--ghost support__link" href="https://www.buymeacoffee.com/admjski">Support on Buy Me a Coffee</a>
-          </article>
-          <article class="support__card support__card--issue">
-            <div class="support__card-header">
-              <span class="support__icon" aria-hidden="true">🐞</span>
-              <h3>Report an issue</h3>
-            </div>
-            <p>Found a bug or missing a feature? Log it so it can be fixed quickly.</p>
-            <a class="button button--ghost support__link" href="https://github.com/uxillary/font-size-tweak/issues">Open a GitHub issue</a>
-          </article>
-        </div>
-      </div>
-    </section>
+    <section class="support"><div class="container support-inner"><div><h2>Made by uxillary</h2><p>Follow the creator or support continued work on this small utility.</p></div><div class="actions"><a class="button secondary" href="https://github.com/uxillary">GitHub profile</a><a class="button coffee" href="https://coff.ee/admjski">☕ Buy Me a Coffee</a><a class="text-link" href="https://adamj.link">Personal website ↗</a></div></div></section>
   </main>
 
-  <footer class="site-footer" role="contentinfo">
-    <div class="container footer__layout">
-      <div>
-        <p>&copy; <span id="year">2024</span> <a href="https://github.com/uxillary/font-size-tweak">Font Size Tweak</a>. MIT Licence.</p>
-        <p>No cookies, no trackers. Privacy-friendly by design.</p>
-      </div>
-      <div>
-        <ul class="footer__links">
-          <li><a href="https://github.com/uxillary/font-size-tweak">Source on GitHub</a></li>
-          <li><a href="#comparison">Free alternative overview</a></li>
-          <li><a href="#faq">Troubleshooting</a></li>
-        </ul>
-        <ul class="footer__links">
-          <li><a href="https://twitter.com/admjski">Twitter (@admjski)</a></li>
-          <li><a href="https://adamj.link">Online hub</a></li>
-        </ul>
-      </div>
-    </div>
-  </footer>
+  <footer><div class="container footer-inner"><a class="brand" href="#top"><img src="assets/logo.svg" width="30" height="30" alt=""><span>Font Size Tweak</span></a><p>Open source under the MIT licence. No cookies or trackers.</p><a href="#top">Back to top ↑</a></div></footer>
   <script src="assets/app.js" defer></script>
-
-  <!-- JSON-LD structured data start -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Font Size Tweak",
-    "description": "Font Size Tweak is a free, portable Windows 10/11 utility to change system font sizes without using display scaling.",
-    "operatingSystem": "Windows 10/11",
-    "applicationCategory": "DesktopApplication",
-    "softwareVersion": "1.0.2",
-    "license": "https://opensource.org/licenses/MIT",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "downloadUrl": "https://github.com/uxillary/font-size-tweak/releases/latest",
-    "author": {
-      "@type": "Person",
-      "name": "Adam Johnston"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "uxillary"
-    },
-    "keywords": [
-      "Windows font size",
-      "change system font without scaling",
-      "Advanced System Font Changer alternative",
-      "Windows 11 font size"
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Does this replace display scaling?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Font Size Tweak lets you change Windows system font size for individual interface elements without altering your global display scaling setting."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Which Windows versions are supported?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The tool targets Windows 11 and Windows 10 desktop releases. Earlier versions may partially work but are not officially supported."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is it portable and safe to use?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. The executable is portable, digitally unsigned, and open source. It writes only to HKCU\\Control Panel\\Desktop\\WindowMetrics when you apply changes."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need to restart or sign out/in?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Most tweaks apply immediately, but we recommend signing out and back in to ensure every application recognises the new font size."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I revert to defaults?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Use the reset button to restore Microsoft defaults for every element."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How is this different from Advanced System Font Changer?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Font Size Tweak focuses on core Windows font controls with an MIT licence, dark mode interface, and zero-cost download. Advanced System Font Changer offers similar controls with commercial add-ons."
-        }
-      }
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://uxillary.github.io/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Font Size Tweak",
-        "item": "https://uxillary.github.io/font-size-tweak/"
-      }
-    ]
-  }
-  </script>
-  <!-- JSON-LD structured data end -->
 </body>
 </html>

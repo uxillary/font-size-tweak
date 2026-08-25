@@ -1,4 +1,9 @@
-theme: jekyll-theme-minimal
 title: Font Size Tweak
-description: A free Windows tool to customize system font sizes without changing screen scaling. Dark mode, modern UI, portable.
-logo: logo.png
+description: Change supported Windows 10 and Windows 11 system font sizes without display scaling.
+url: https://uxillary.github.io
+baseurl: /font-size-tweak
+permalink: pretty
+include:
+  - robots.txt
+exclude:
+  - README.md

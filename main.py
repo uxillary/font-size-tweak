@@ -1,3 +1,5 @@
+import base64
+import json
 import os
 import struct
 import sys
@@ -24,8 +26,13 @@ FONT_KEY_DESC = {
 }
 REGISTRY_PATH = r"Control Panel\Desktop\WindowMetrics"
 MIN_SIZE, MAX_SIZE, START_SIZE = 8, 16, 11
+APPDATA_DIR = os.environ.get(
+    "APPDATA", os.path.join(os.path.expanduser("~"), "AppData", "Roaming")
+)
+BACKUP_PATH = os.path.join(APPDATA_DIR, "FontSizeTweak", "original-settings.json")
 
 original_values = None
+original_backup_error = None
 undo_values = None
 operation_in_progress = False
 
@@ -69,11 +76,68 @@ def read_values(font_key_names):
     return {name: read_font_value(name) for name in font_key_names}
 
 
+def validate_backup_values(values):
+    expected_keys = set(FONT_KEY_MAP.values())
+    if not isinstance(values, dict) or set(values) != expected_keys:
+        raise ValueError("backup does not contain exactly the five supported font values")
+    for font_key_name, value in values.items():
+        if not isinstance(value, bytes) or len(value) < 4:
+            raise ValueError(f"backup data for {font_key_name} is invalid")
+    return values
+
+
+def load_original_backup():
+    try:
+        with open(BACKUP_PATH, "r", encoding="utf-8") as backup_file:
+            document = json.load(backup_file)
+        if not isinstance(document, dict) or document.get("version") != 1:
+            raise ValueError("backup has an unsupported format")
+        encoded_values = document.get("values")
+        if not isinstance(encoded_values, dict):
+            raise ValueError("backup values are missing")
+        values = {
+            name: base64.b64decode(encoded, validate=True)
+            for name, encoded in encoded_values.items()
+            if isinstance(name, str) and isinstance(encoded, str)
+        }
+        return validate_backup_values(values)
+    except FileNotFoundError:
+        return None
+    except (OSError, ValueError, TypeError, json.JSONDecodeError) as error:
+        raise ValueError(f"invalid backup at {BACKUP_PATH}: {error}") from error
+
+
+def save_original_backup(values):
+    validate_backup_values(values)
+    backup_directory = os.path.dirname(BACKUP_PATH)
+    os.makedirs(backup_directory, exist_ok=True)
+    document = {
+        "version": 1,
+        "values": {
+            name: base64.b64encode(value).decode("ascii")
+            for name, value in values.items()
+        },
+    }
+    # Exclusive creation prevents a later run from replacing the true originals.
+    try:
+        with open(BACKUP_PATH, "x", encoding="utf-8") as backup_file:
+            json.dump(document, backup_file, indent=2, sort_keys=True)
+            backup_file.write("\n")
+    except FileExistsError:
+        return load_original_backup()
+    return values
+
+
 def ensure_original_backup():
-    global original_values
+    global original_values, original_backup_error
     if original_values is None:
-        # Refuse all writes unless all five originals can first be captured.
-        original_values = read_values(FONT_KEY_MAP.values())
+        if original_backup_error is not None:
+            raise ValueError(original_backup_error)
+        # Refuse all writes unless all five originals are captured and saved.
+        captured_values = read_values(FONT_KEY_MAP.values())
+        original_values = save_original_backup(captured_values)
+        original_backup_error = None
+        update_button_states()
     return original_values
 
 
@@ -92,6 +156,12 @@ def valid_size(value):
     return size if MIN_SIZE <= size <= MAX_SIZE else None
 
 
+try:
+    original_values = load_original_backup()
+except ValueError as error:
+    original_backup_error = str(error)
+
+
 app = ttk.Window(title="Font Size Tweak", themename="darkly", resizable=(False, False))
 app.geometry("570x650")
 app.option_add("*Font", ("Segoe UI", 10))
@@ -103,20 +173,48 @@ current_size = None
 size_sync_in_progress = False
 
 
-def set_status(text, style="secondary"):
+def set_status(text, style="info"):
     status_label.configure(text=text, bootstyle=style)
 
 
-def update_undo_button():
-    state = "disabled" if operation_in_progress or undo_values is None else "normal"
-    undo_button.configure(state=state)
+def update_button_states():
+    if not operation_controls:
+        return
+    busy = operation_in_progress
+    proposed_size = valid_size(individual_size.get())
+    pending_change = (
+        proposed_size is not None
+        and current_size is not None
+        and proposed_size != current_size
+    )
+    apply_all_button.configure(
+        state="disabled" if busy or valid_size(quick_size.get()) is None else "normal"
+    )
+    apply_individual_button.configure(
+        state="normal" if not busy and pending_change else "disabled"
+    )
+    has_selected_backup = (
+        original_values is not None
+        and FONT_KEY_MAP[selected_font.get()] in original_values
+    )
+    restore_selected_button.configure(
+        state="normal" if not busy and has_selected_backup else "disabled"
+    )
+    restore_all_button.configure(
+        state="normal" if not busy and original_values is not None else "disabled"
+    )
+    undo_button.configure(
+        state="normal" if not busy and undo_values is not None else "disabled"
+    )
 
 
 def set_operation_controls_enabled(enabled):
-    state = "normal" if enabled else "disabled"
-    for control in operation_controls:
-        control.configure(state=state)
-    update_undo_button()
+    if not enabled:
+        for control in operation_controls:
+            control.configure(state="disabled")
+        undo_button.configure(state="disabled")
+    else:
+        update_button_states()
 
 
 def run_operation(callback):
@@ -163,9 +261,10 @@ def update_proposed_value(*_args):
             text=f"New: enter {MIN_SIZE}\u2013{MAX_SIZE} pt", bootstyle="warning"
         )
     elif current_size is not None and size != current_size:
-        proposed_label.configure(text=f"New: {size} pt", bootstyle="info")
+        proposed_label.configure(text=f"New: {size} pt  (not applied)", bootstyle="info")
     else:
         proposed_label.configure(text=f"New: {size} pt", bootstyle="light")
+    update_button_states()
 
 
 def sync_from_slider(variable, slider_value, preview_label):
@@ -190,6 +289,8 @@ def sync_from_spinbox(variable, slider, preview_label):
     if size is None:
         if variable is individual_size:
             update_proposed_value()
+        else:
+            update_button_states()
         return
     size_sync_in_progress = True
     try:
@@ -199,6 +300,8 @@ def sync_from_spinbox(variable, slider, preview_label):
         size_sync_in_progress = False
     if variable is individual_size:
         update_proposed_value()
+    else:
+        update_button_states()
 
 
 def validate_spinbox(proposed):
@@ -213,25 +316,38 @@ def apply_sizes(font_key_names, size, success_text):
         set_status(f"Could not back up original settings: {error}", "danger")
         return
 
-    previous, errors = {}, []
+    previous, updated_values, errors = {}, {}, []
     for font_key_name in font_key_names:
         try:
             value = read_font_value(font_key_name)
-            updated_value = value_with_size(value, size)
-            if updated_value != value:
-                write_font_value(font_key_name, updated_value)
-                previous[font_key_name] = value
+            previous[font_key_name] = value
+            updated_values[font_key_name] = value_with_size(value, size)
         except (OSError, ValueError, struct.error) as error:
             errors.append((font_key_name, error))
 
-    if previous:
-        undo_values = previous
-        update_undo_button()
+    changed_names = []
+    for font_key_name, updated_value in updated_values.items():
+        if updated_value == previous[font_key_name]:
+            continue
+        try:
+            write_font_value(font_key_name, updated_value)
+            changed_names.append(font_key_name)
+        except (OSError, ValueError) as error:
+            errors.append((font_key_name, error))
+
+    if changed_names:
+        # A complete Apply to All keeps one five-value pre-operation snapshot.
+        undo_values = (
+            previous
+            if not errors
+            else {name: previous[name] for name in changed_names}
+        )
+        update_button_states()
         refresh_current_value()
     if errors:
-        prefix = f"Updated {len(previous)} setting(s). " if previous else ""
+        prefix = f"Updated {len(changed_names)} setting(s). " if changed_names else ""
         set_status(prefix + "Could not update " + format_errors(errors), "danger")
-    elif previous:
+    elif changed_names:
         set_status(success_text, "success")
     else:
         set_status("No changes were needed.")
@@ -272,21 +388,33 @@ def restore_values(target_values, success_text):
     previous, errors = {}, []
     for font_key_name, original_value in target_values.items():
         try:
-            current_value = read_font_value(font_key_name)
-            if current_value != original_value:
-                write_font_value(font_key_name, original_value)
-                previous[font_key_name] = current_value
+            previous[font_key_name] = read_font_value(font_key_name)
         except (OSError, ValueError) as error:
             errors.append((font_key_name, error))
 
-    if previous:
-        undo_values = previous
-        update_undo_button()
+    changed_names = []
+    for font_key_name, current_value in previous.items():
+        original_value = target_values[font_key_name]
+        if current_value == original_value:
+            continue
+        try:
+            write_font_value(font_key_name, original_value)
+            changed_names.append(font_key_name)
+        except (OSError, ValueError) as error:
+            errors.append((font_key_name, error))
+
+    if changed_names:
+        undo_values = (
+            previous
+            if not errors
+            else {name: previous[name] for name in changed_names}
+        )
+        update_button_states()
         refresh_current_value()
     if errors:
-        prefix = f"Restored {len(previous)} setting(s). " if previous else ""
+        prefix = f"Restored {len(changed_names)} setting(s). " if changed_names else ""
         set_status(prefix + "Could not restore " + format_errors(errors), "danger")
-    elif previous:
+    elif changed_names:
         set_status(success_text, "success")
     else:
         set_status("The selected settings already match the original values.")
@@ -304,7 +432,7 @@ def restore_selected():
             return
         restore_values(
             {font_key_name: backup[font_key_name]},
-            f"{display_name} restored to its original setting.",
+            f"{display_name} restored to the original value.",
         )
 
     run_operation(restore)
@@ -367,7 +495,7 @@ ttk.Label(
 ttk.Label(
     app,
     text="Adjust supported Windows text without changing display scaling",
-    bootstyle="secondary",
+    bootstyle="light",
 ).pack(pady=(0, 10))
 
 content = ttk.Frame(app, padding=(18, 0))
@@ -411,7 +539,7 @@ font_menu = ttk.OptionMenu(
     bootstyle="secondary",
 )
 font_menu.grid(row=0, column=1, columnspan=3, sticky="w")
-description_label = ttk.Label(individual_frame, text="", bootstyle="secondary")
+description_label = ttk.Label(individual_frame, text="", bootstyle="light")
 description_label.grid(row=1, column=0, columnspan=4, sticky="w", pady=(4, 7))
 
 value_frame = ttk.Frame(individual_frame)
@@ -445,7 +573,7 @@ apply_individual_button = ttk.Button(
 )
 apply_individual_button.pack(side="left", padx=(0, 6))
 restore_selected_button = ttk.Button(
-    individual_buttons, text="Restore Icons", command=restore_selected, bootstyle="secondary"
+    individual_buttons, text="Restore Icons", command=restore_selected, bootstyle="outline-light"
 )
 restore_selected_button.pack(side="left")
 
@@ -453,7 +581,7 @@ status_frame = ttk.LabelFrame(content, text="STATUS", padding=(12, 8))
 status_frame.grid(row=2, column=0, sticky="ew", pady=(0, 8))
 status_label = ttk.Label(
     status_frame, text="Ready. Changes affect supported Windows font metrics only.",
-    wraplength=500, justify="left", bootstyle="secondary",
+    wraplength=500, justify="left", bootstyle="info",
 )
 status_label.pack(anchor="w")
 
@@ -466,14 +594,14 @@ undo_button = ttk.Button(
 undo_button.pack(side="left", padx=(0, 7))
 restore_all_button = ttk.Button(
     recovery_buttons, text="Restore Original Settings", command=restore_all,
-    bootstyle="outline-light",
+    bootstyle="outline-danger",
 )
 restore_all_button.pack(side="left")
 
 ttk.Label(
     content,
-    text="Some Windows properties and system dialogs only respond to Accessibility or display scaling.",
-    wraplength=520, justify="center", bootstyle="secondary",
+    text="Some Windows interfaces use different rendering systems and may not respond to these font metrics.",
+    wraplength=520, justify="center", bootstyle="light",
 ).grid(row=4, column=0, pady=(0, 8))
 
 operation_controls = [
@@ -496,6 +624,9 @@ individual_size.trace_add(
 selected_font.trace_add("write", lambda *_: refresh_current_value(clear_status=True))
 
 refresh_current_value()
+if original_backup_error is not None:
+    set_status(original_backup_error, "danger")
+update_button_states()
 try:
     app.iconbitmap(resource_path("icon.ico"))
 except (OSError, tk.TclError):

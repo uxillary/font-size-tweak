@@ -18,7 +18,8 @@
     setText('latest-version', latest.tag_name);
     setText('release-date', formatDate(latest.published_at));
     setText('release-title', latest.name || latest.tag_name);
-    setText('release-meta', `Released ${formatDate(latest.published_at)}`);
+    const releaseMeta = document.getElementById('release-meta');
+    if (releaseMeta) releaseMeta.innerHTML = `<i class="fa-regular fa-calendar" aria-hidden="true"></i> Released ${formatDate(latest.published_at)}`;
     const asset = latest.assets.find(item => /\.exe$/i.test(item.name)) || latest.assets[0];
     const downloadUrl = asset ? asset.browser_download_url : latest.html_url;
     document.querySelectorAll('.js-latest-download').forEach(link => { link.href = downloadUrl; });
@@ -29,7 +30,7 @@
     const schema = document.getElementById('software-schema');
     if (schema) { const data = JSON.parse(schema.textContent); data.softwareVersion = latest.tag_name.replace(/^v/, ''); data.downloadUrl = downloadUrl; schema.textContent = JSON.stringify(data); }
     const older = published.filter(release => release.id !== latest.id).slice(0, 5);
-    if (older.length) document.getElementById('previous-releases').innerHTML = older.map(release => `<article class="release"><div><h4>${escapeHtml(release.tag_name)}</h4><p>${formatDate(release.published_at)}</p></div><a href="${escapeHtml(release.html_url)}">Release &amp; download ↗</a></article>`).join('');
+    if (older.length) document.getElementById('previous-releases').innerHTML = older.map(release => `<article class="release"><div><h4>${escapeHtml(release.tag_name)}</h4><p><i class="fa-regular fa-calendar" aria-hidden="true"></i> ${formatDate(release.published_at)}</p></div><a href="${escapeHtml(release.html_url)}">Release &amp; download <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></article>`).join('');
   }).catch(() => { document.querySelectorAll('.js-latest-download').forEach(link => { link.href = fallbackRelease; }); });
 
   function escapeHtml(value) { const node = document.createElement('span'); node.textContent = value; return node.innerHTML; }

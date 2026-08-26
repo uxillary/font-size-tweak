@@ -32,8 +32,10 @@
       document.querySelectorAll('.js-latest-download').forEach(link => { link.href = downloadUrl; });
       const download = document.getElementById('release-download');
       const notes = document.getElementById('release-notes');
+      const versionStatLink = document.getElementById('version-stat-link');
       if (download) download.href = downloadUrl;
       if (notes) notes.href = latest.html_url;
+      if (versionStatLink) versionStatLink.href = latest.html_url;
       const schema = document.getElementById('software-schema');
       if (schema) { const data = JSON.parse(schema.textContent); data.softwareVersion = latest.tag_name.replace(/^v/, ''); data.downloadUrl = downloadUrl; schema.textContent = JSON.stringify(data); }
       const older = published.filter(release => release.id !== latest.id).slice(0, 5);

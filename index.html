@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Font Size Tweak — Free Windows tool to change system font sizes (Windows 10/11)</title>
-  <meta name="description" content="Font Size Tweak is a free, portable Windows 10/11 utility to change system font sizes (title bar, menus, icons, message boxes, status bar) without using display scaling. Dark mode, live preview, one-click reset." />
+  <meta name="description" content="Font Size Tweak is a free, portable Windows 10/11 utility to change supported system font sizes without display scaling, with original-settings backup and undo." />
   <link rel="canonical" href="https://uxillary.github.io/font-size-tweak/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Font Size Tweak — Free Windows tool to change system font sizes (Windows 10/11)" />
@@ -57,7 +57,7 @@
             <li>Windows 10/11 support</li>
             <li>Portable .exe (no install)</li>
             <li>Dark mode friendly</li>
-            <li>Live preview + one-click reset</li>
+            <li>Current/new values + safe restore</li>
           </ul>
           <div class="hero__cta">
             <a class="button button--primary" href="https://github.com/uxillary/font-size-tweak/releases/latest">Download (Free)</a>
@@ -84,15 +84,15 @@
           </article>
           <article class="feature-card">
             <h3>Dark mode ready</h3>
-            <p>Automatic theme adapts to your Windows appearance, with manual override if you prefer.</p>
+            <p>A compact dark interface keeps controls and status feedback easy to scan.</p>
           </article>
           <article class="feature-card">
             <h3>Portable (no install)</h3>
-            <p>Carry the executable on a USB drive. No setup, no admin rights, nothing left behind.</p>
+            <p>Carry the executable on a USB drive. No setup or administrator rights are required; original settings are backed up in your user profile.</p>
           </article>
           <article class="feature-card">
-            <h3>Reset to defaults</h3>
-            <p>Restore Microsoft defaults with one click to undo experiments instantly.</p>
+            <h3>Restore your originals</h3>
+            <p>Restore the settings captured before the first change, or undo the latest operation.</p>
           </article>
           <article class="feature-card">
             <h3>Current size detection</h3>
@@ -157,11 +157,11 @@
               </tr>
               <tr>
                 <th scope="row">Windows 10/11 support</th>
-                <td>Full</td>
+                <td>Supported desktop releases</td>
                 <td>Yes</td>
               </tr>
               <tr>
-                <th scope="row">Reset to defaults</th>
+                <th scope="row">Restore captured originals</th>
                 <td>Yes</td>
                 <td>Yes</td>
               </tr>
@@ -224,7 +224,7 @@
           </details>
           <details>
             <summary>Can I revert to defaults?</summary>
-            <p>Absolutely. Use the reset button to restore Microsoft defaults for every element.</p>
+            <p>Yes. Restore the values captured before the app's first change; these are your actual original settings, not hard-coded defaults.</p>
           </details>
           <details>
             <summary>How is this different from Advanced System Font Changer?</summary>
@@ -239,8 +239,7 @@
         <h2 id="changelog-title">Changelog highlights</h2>
         <p>See full details on the <a href="https://github.com/uxillary/font-size-tweak/releases">GitHub Releases page</a>.</p>
         <ol class="changelog__list">
-          <li><strong>v1.0.2</strong> — Updated live preview responsiveness and added dark mode polish.</li>
-          <li><strong>v1.0.1</strong> — Improved registry detection and message box defaults.</li>
+          <li><strong>v1.1.0</strong> — Added persistent original-settings backup, selected/all restore, one-level undo, exact controls and clearer status feedback.</li>
           <li><strong>v1.0.0</strong> — Initial public release with per-element font controls.</li>
         </ol>
       </div>
@@ -268,7 +267,7 @@
               <h3>Buy me a coffee</h3>
             </div>
             <p>Keep the project moving with a one-time or recurring contribution.</p>
-            <a class="button button--ghost support__link" href="https://www.buymeacoffee.com/uxillary">Support on Buy Me a Coffee</a>
+            <a class="button button--ghost support__link" href="https://coff.ee/admjski">Support on Buy Me a Coffee</a>
           </article>
           <article class="support__card support__card--issue">
             <div class="support__card-header">
@@ -376,10 +375,10 @@
       },
       {
         "@type": "Question",
-        "name": "Can I revert to defaults?",
+        "name": "Can I restore my original settings?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Use the reset button to restore Microsoft defaults for every element."
+          "text": "Yes. Restore the values captured before the app's first change; these are the user's actual original settings, not hard-coded defaults."
         }
       },
       {

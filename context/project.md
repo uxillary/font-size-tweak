@@ -25,9 +25,9 @@ GitHub Pages:
 
 `https://uxillary.github.io/font-size-tweak/`
 
-Current release:
+Latest release:
 
-`https://github.com/uxillary/font-size-tweak/releases/tag/v1.0.0`
+`https://github.com/uxillary/font-size-tweak/releases/latest`
 
 Support:
 

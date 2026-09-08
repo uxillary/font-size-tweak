@@ -1,119 +1,53 @@
 # Font Size Tweak — Project Context
 
-## Project overview
+## Product
 
-**Font Size Tweak** is a lightweight, open-source Windows utility for changing supported Windows UI font sizes **without increasing overall display scaling**.
+Font Size Tweak is a lightweight, open-source Windows 10/11 utility for changing supported Windows UI font sizes without increasing overall display scaling. It exists for cases where particular interface text is uncomfortable to read but broader Windows scaling makes controls, spacing and whole applications too large.
 
-The project started because some Windows text — especially File Explorer/sidebar text and other system UI text — was difficult to read, while increasing Windows scaling made everything else too large.
+The project should remain free, accessible, portable, understandable and focused. It uses Python, tkinter, ttkbootstrap and Windows registry APIs; it should not gain telemetry, accounts, a background service or a heavyweight application framework.
 
-The goal is to keep the app:
+## Current release
 
-- free
-- lightweight
-- accessible
-- portable
-- open source
-- easy to download from GitHub
-- simple enough to understand and maintain
-- useful as an alternative to tools such as Advanced System Font Changer
+Version **1.1.0** is the current documented release. It provides:
 
-Repository:
+- a shared Quick Adjustment for all supported metrics;
+- individual 8–16 pt controls with current/proposed values and sample previews;
+- persistent capture and restore of the user's original raw settings;
+- one-level, session-only undo;
+- validation, operation status and partial-failure reporting; and
+- a compact dark interface.
 
-`https://github.com/uxillary/font-size-tweak`
+The current application screenshot is [`docs/assets/screenshot1.png`](../docs/assets/screenshot1.png). Documentation should link that file rather than the older `assets/screenshot.png` or `docs/v1screenshot.png` images.
 
-GitHub Pages:
+## Registry implementation
 
-`https://uxillary.github.io/font-size-tweak/`
-
-Latest release:
-
-`https://github.com/uxillary/font-size-tweak/releases/latest`
-
-Support:
-
-`https://coff.ee/admjski`
-
----
-
-# Why the app exists
-
-Windows provides:
-
-- Display scaling
-- Accessibility → Text size
-- App-specific zoom
-
-But increasing Windows scaling can also enlarge:
-
-- icons
-- toolbars
-- buttons
-- panels
-- entire application interfaces
-
-Font Size Tweak instead focuses on supported Windows system font metrics, allowing text to be enlarged without deliberately scaling the rest of the desktop UI.
-
----
-
-# Core Windows registry approach
-
-The app modifies font metrics stored under:
-
-`HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics`
-
-The supported registry values are:
-
-- `CaptionFont`
-- `MenuFont`
-- `MessageFont`
-- `IconFont`
-- `StatusFont`
-
-Approximate mapping:
+The app works with `HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics`:
 
 | App label | Registry value | Typical use |
 | --- | --- | --- |
-| Title Bar | `CaptionFont` | Window title text |
-| Menus | `MenuFont` | Classic menus/context menus |
-| Message Boxes | `MessageFont` | Some classic dialog/message UI |
-| Icons | `IconFont` | Desktop/File Explorer labels and related shell text |
+| Title Bar | `CaptionFont` | Classic window title text |
+| Menus | `MenuFont` | Classic menus and context menus |
+| Message Boxes | `MessageFont` | Some classic dialogs and prompts |
+| Icons | `IconFont` | Desktop and supported Explorer labels |
 | Status Bar | `StatusFont` | Status text in compatible legacy UI |
 
-Windows contains a mixture of classic Win32 and newer UI/rendering systems, so not every visible piece of Windows text responds to these settings.
+The reliable implementation is to read and validate each existing `REG_BINARY` value, preserve its font/style data and replace only the first four bytes containing `lfHeight`. Do not reconstruct a complete `LOGFONT` structure merely to change its size.
 
-Do not make guarantees about unsupported Windows components.
+Original values are captured before the first write and stored at `%APPDATA%\FontSizeTweak\original-settings.json`. The backup must contain all five complete values, must not be overwritten on subsequent launches and must remain the source for restore operations. Undo is intentionally one level and in memory, so documentation must not imply that it persists between launches.
 
----
+## Accuracy rules
 
-# Important technical discovery
+- Describe the utility as portable, but clarify that its persistent backup lives in the user's Windows profile.
+- Do not describe the sample label as a full Windows UI preview.
+- Do not promise that every Explorer view, dialog or application will respond.
+- Explain that newer/custom-rendered interfaces may ignore classic metrics and that a sign-out may be needed.
+- Do not advertise font-family, bold, italic, preset or profile support until those features exist.
+- State that administrator rights are unnecessary because settings are per user.
 
-The project originally attempted to manually build the Windows `LOGFONT` binary structure using `struct.pack()`.
+## Links
 
-This caused repeated packing/structure errors.
-
-The more reliable solution was to preserve the existing registry data and change only the font-height field.
-
-The current approach is:
-
-1. Read the existing `REG_BINARY` value.
-2. Convert it to a `bytearray`.
-3. Preserve all existing font/style information.
-4. Replace only the first four bytes representing `lfHeight`.
-5. Write the modified binary back.
-
-Example:
-
-```python
-value, regtype = winreg.QueryValueEx(key, font_key_name)
-
-font_bytes = bytearray(value)
-
-font_bytes[0:4] = struct.pack("<l", height)
-
-winreg.SetValueEx(
-    key,
-    font_key_name,
-    0,
-    winreg.REG_BINARY,
-    bytes(font_bytes)
-)
+- Repository: <https://github.com/uxillary/font-size-tweak>
+- Project website: <https://uxillary.github.io/font-size-tweak/>
+- Latest release: <https://github.com/uxillary/font-size-tweak/releases/latest>
+- Issues: <https://github.com/uxillary/font-size-tweak/issues>
+- Support: <https://coff.ee/admjski>

@@ -1,5 +1,7 @@
 # Font Size Tweak — Development Roadmap
 
+> Current baseline: **v1.1.0 is released**. Its backup, restore, undo, exact-size, current/proposed-value, status and compact-UI work is complete. The next planned feature group is v1.2; roadmap items are proposals, not current capabilities.
+
 ## Project direction
 
 Font Size Tweak should grow from a simple Windows font-size utility into a polished, free and open-source alternative to tools such as:
@@ -152,7 +154,7 @@ Future versions may expand this into a proper history system.
 
 ## Status
 
-Current development focus.
+Released in v1.1.0.
 
 ## Goal
 

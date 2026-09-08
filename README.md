@@ -5,59 +5,73 @@
 [![Windows 10/11](https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4?logo=windows)](https://uxillary.github.io/font-size-tweak/)
 [![GitHub stars](https://img.shields.io/github/stars/uxillary/font-size-tweak?style=flat)](https://github.com/uxillary/font-size-tweak)
 
-Font Size Tweak is a free, open-source Windows 10/11 utility for making supported File Explorer, menu, icon, title bar and system UI text easier to read without increasing display scaling. It is designed for the common problem where **File Explorer text is too small** or the **Windows 11 font size** is uncomfortable, but making all Windows text larger through scaling also makes everything else bigger.
+Font Size Tweak is a free, open-source utility for adjusting five classic Windows UI font metrics without changing display scaling. It is aimed at Windows 10 and Windows 11 users who want supported File Explorer labels, menus, title bars, message text or status text to be easier to read without enlarging the entire desktop.
 
-![Font Size Tweak showing individual Windows font-size controls](assets/screenshot.png)
+[![Font Size Tweak v1.1.0 showing Quick Adjustment, Individual Adjustment, status and recovery controls](docs/assets/screenshot1.png)](docs/assets/screenshot1.png)
 
-## Download latest
+## Download and use
 
-**[Download the latest release](https://github.com/uxillary/font-size-tweak/releases/latest)**, extract it and run `FontSizeTweak.exe`.
+1. **[Download the latest release](https://github.com/uxillary/font-size-tweak/releases/latest)**.
+2. Extract the downloaded archive.
+3. Run `FontSizeTweak.exe`.
+4. Choose a size from 8–16 pt and apply it to every supported metric, or select one metric under **Individual Adjustment**.
+5. Sign out of Windows and back in if a compatible interface does not refresh immediately.
 
-The executable is portable: it does not require installation or administrator rights. See [all releases](https://github.com/uxillary/font-size-tweak/releases) for previous versions and release notes.
+The executable is portable and requires neither installation nor administrator rights. The app does, however, keep its safety backup in your Windows profile; see [Backup, restore and undo](#backup-restore-and-undo).
 
-## Key features
+## Current release: v1.1.0
 
-- **Quick Apply** changes all five supported font metrics to one size.
-- Individual controls cover title bars, menus, message boxes, icons and status bars.
-- Current and proposed sizes are shown before an individual change is applied.
-- Synchronized sliders and numeric controls allow exact sizes from 8–16 pt.
-- The original raw settings are backed up persistently before the first change.
-- Restore one selected original setting or all five original settings.
-- **Undo Last Change** reverses the most recent apply or restore operation.
-- Clear status, validation and partial-error feedback.
-- Portable, no-admin-rights-required Windows executable.
-- Free and open source under the [MIT Licence](LICENSE).
+The current interface includes:
 
-## Why use Font Size Tweak?
+- **Quick Adjustment** to apply one size to all five supported metrics.
+- **Individual Adjustment** for title bars, menus, message boxes, icons and status bars.
+- Synchronized sliders and numeric controls for exact sizes from **8–16 pt**.
+- A sample-text preview of the chosen point size.
+- The selected metric's current registry-derived size and proposed size.
+- Persistent status, validation and partial-error feedback.
+- Persistent original-settings backup, selected/all restore actions and one-level undo.
 
-Windows display scaling is useful, but it enlarges much more than text. Font Size Tweak provides a focused way to change supported Windows font sizes without scaling the whole desktop. It can help when Windows 11 text is too small on a laptop or high-resolution display, and offers a lightweight, open-source Windows system font changer for people seeking an Advanced System Font Changer alternative focused on font size.
+See the [changelog](CHANGELOG.md) for release history.
 
-## How it works
+## What it changes
 
-Font Size Tweak reads the five supported `REG_BINARY` font values under `HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics`. When changing a size, it preserves the existing font data and modifies only its height field. Changes may require signing out of Windows and back in before every compatible interface refreshes.
+Font Size Tweak reads these `REG_BINARY` values under `HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics`:
 
-## Supported Windows versions
+| App control | Registry value | Commonly affects |
+| --- | --- | --- |
+| Title Bar | `CaptionFont` | Classic window title text |
+| Menus | `MenuFont` | Classic menu bars and context menus |
+| Message Boxes | `MessageFont` | Some classic messages and prompts |
+| Icons | `IconFont` | Desktop and supported File Explorer labels |
+| Status Bar | `StatusFont` | Status text in compatible legacy interfaces |
 
-Font Size Tweak supports Windows 10 and Windows 11 desktop releases. It uses per-user settings, so administrator rights are not required.
+When applying a size, the app preserves the existing binary font data and replaces only its four-byte height field. It changes per-user values under `HKEY_CURRENT_USER`, which is why elevation is not required.
 
-## Limitations
+## Backup, restore and undo
 
-The app changes these classic Windows metrics: `CaptionFont`, `MenuFont`, `MessageFont`, `IconFont` and `StatusFont`. Some Windows interfaces and applications use different rendering systems and may not respond to these metrics. Font Size Tweak does not claim to change every dialog, Properties window or piece of application text.
+Before the first registry write, the app captures all five complete original values in:
 
-## Safety and backup
+```text
+%APPDATA%\FontSizeTweak\original-settings.json
+```
 
-Before its first write, the app saves the complete original values for all five supported metrics to `%APPDATA%\FontSizeTweak\original-settings.json`. Restore actions use **your captured original settings**, not hard-coded Microsoft defaults. A one-level undo snapshot also protects the state immediately before the latest operation.
+That file is deliberately not replaced on later launches. **Restore** uses the settings captured from your computer, not assumed Microsoft defaults. Although the executable is portable, this backup stays in the current user's profile; keep it if you move or replace the executable and still want access to the captured originals.
 
-The app changes user registry settings, so close important work first. If you maintain your own system backups or restore points, keep using them as an additional precaution.
+**Undo Last Change** is a one-level, in-memory snapshot of the latest apply or restore operation. It is consumed when used and does not survive closing the app. Failed entries are retained so a transient write failure can be retried.
 
-## Releases and previous versions
+## Scope and limitations
 
-- [Latest release and download](https://github.com/uxillary/font-size-tweak/releases/latest)
-- [All releases and previous versions](https://github.com/uxillary/font-size-tweak/releases)
-- [Changelog](CHANGELOG.md)
-- [Development roadmap](context/roadmap.md)
+Windows mixes classic font metrics with newer and application-specific rendering systems. Consequently:
 
-## Development and running from source
+- not every Windows control, dialog or application responds to these values;
+- results can differ between Windows components and builds;
+- the preview demonstrates the selected point size, but is not a simulation of every affected Windows interface;
+- signing out and back in may be required before all compatible interfaces refresh; and
+- the app changes font size only—it does not currently provide font-family, bold, italic, profile or preset controls.
+
+Font Size Tweak supports Windows 10 and Windows 11 desktop releases. It intentionally uses the Windows-only `winreg` API and does not run on macOS or Linux.
+
+## Run from source
 
 Python 3 with Tk support is required. On Windows:
 
@@ -68,15 +82,18 @@ py -m pip install -r requirements.txt
 py main.py
 ```
 
-The application intentionally uses Windows registry APIs and therefore does not run on macOS or Linux.
+`ttkbootstrap` is the only third-party runtime dependency; registry access and the desktop UI otherwise use Python's standard library.
 
-## Support and issues
+## Project links
 
-Found a bug or have a focused feature request? [Open a GitHub issue](https://github.com/uxillary/font-size-tweak/issues). You can also visit the [project website](https://uxillary.github.io/font-size-tweak/) or [support development on Buy Me a Coffee](https://coff.ee/admjski).
+- [Latest release and download](https://github.com/uxillary/font-size-tweak/releases/latest)
+- [All releases and previous versions](https://github.com/uxillary/font-size-tweak/releases)
+- [Project website](https://uxillary.github.io/font-size-tweak/)
+- [Issues and feature requests](https://github.com/uxillary/font-size-tweak/issues)
+- [Development roadmap](context/roadmap.md)
+- [Buy Me a Coffee](https://coff.ee/admjski)
 
-## Star the project
-
-Found Font Size Tweak useful? Consider [starring the repository](https://github.com/uxillary/font-size-tweak) — it helps more people discover the project.
+If Font Size Tweak is useful, consider [starring the repository](https://github.com/uxillary/font-size-tweak) to help others find it.
 
 ## Licence
 

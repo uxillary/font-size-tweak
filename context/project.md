@@ -51,3 +51,7 @@ Original values are captured before the first write and stored at `%APPDATA%\Fon
 - Latest release: <https://github.com/uxillary/font-size-tweak/releases/latest>
 - Issues: <https://github.com/uxillary/font-size-tweak/issues>
 - Support: <https://coff.ee/admjski>
+
+## Website source
+
+The production GitHub Pages site lives in `/docs`. Website files should not be created at repository root.

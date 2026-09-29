@@ -41,6 +41,16 @@
     yearEl.textContent = new Date().getFullYear();
   }
 
+  document.querySelectorAll('[data-analytics-event]').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (typeof window.gtag !== 'function') return;
+      window.gtag('event', link.dataset.analyticsEvent, {
+        link_text: link.textContent.trim(),
+        link_url: link.href,
+      });
+    });
+  });
+
   const reduceMotionQuery = typeof window.matchMedia === 'function' ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
   if (!reduceMotionQuery.matches && 'scrollBehavior' in document.documentElement.style) {
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {

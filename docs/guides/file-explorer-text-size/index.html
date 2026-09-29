@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Make File Explorer Text Larger in Windows 11 | Font Size Tweak</title>
+  <meta name="description" content="Learn how Windows text size and display scaling affect File Explorer, and how to adjust supported file and folder labels without resizing their icons.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://uxillary.github.io/font-size-tweak/guides/file-explorer-text-size/">
+  <link rel="icon" href="../../icon.ico" sizes="any">
+  <link rel="icon" href="../../logo.png" type="image/png" sizes="256x256">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="../../assets/styles.css">
+  <link rel="stylesheet" href="../../assets/guides.css">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Font Size Tweak">
+  <meta property="og:title" content="Make File Explorer Text Larger in Windows 11 | Font Size Tweak">
+  <meta property="og:description" content="Learn how Windows text size and display scaling affect File Explorer, and how to adjust supported file and folder labels without resizing their icons.">
+  <meta property="og:url" content="https://uxillary.github.io/font-size-tweak/guides/file-explorer-text-size/">
+  <meta property="og:image" content="https://uxillary.github.io/font-size-tweak/assets/screenshot1.png">
+  <meta property="og:image:alt" content="Font Size Tweak controls for supported Windows font metrics">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Make File Explorer Text Larger in Windows 11 | Font Size Tweak">
+  <meta name="twitter:description" content="Learn how Windows text size and display scaling affect File Explorer, and how to adjust supported file and folder labels without resizing their icons.">
+  <meta name="twitter:image" content="https://uxillary.github.io/font-size-tweak/assets/screenshot1.png">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Font Size Tweak","item":"https://uxillary.github.io/font-size-tweak/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://uxillary.github.io/font-size-tweak/guides/"},{"@type":"ListItem","position":3,"name":"File Explorer text size","item":"https://uxillary.github.io/font-size-tweak/guides/file-explorer-text-size/"}]}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="/font-size-tweak/" aria-label="Font Size Tweak home"><img src="../../logo.png" width="36" height="36" alt=""><span>Font Size Tweak</span></a>
+      <nav aria-label="Primary navigation"><a href="/font-size-tweak/">Home</a><a class="nav-guides" href="/font-size-tweak/guides/">Guides</a><a class="nav-github" href="https://github.com/uxillary/font-size-tweak"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></nav>
+    </div>
+  </header>
+  <main id="main" class="guide-main">
+    <article class="container guide-container guide-article">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/font-size-tweak/">Font Size Tweak</a></li><li><a href="/font-size-tweak/guides/">Guides</a></li><li aria-current="page">File Explorer text size</li></ol></nav>
+      <header class="guide-heading">
+        <p class="eyebrow">Windows 11 · File Explorer</p>
+        <h1>Make File Explorer and folder-name text larger</h1>
+        <p class="lede">If file and folder names are hard to read, first try Windows’ text-size setting. If you need more targeted control over supported classic labels, Font Size Tweak can adjust the label font metric without enlarging the icon graphics.</p>
+      </header>
+
+      <div class="guide-prose">
+        <section aria-labelledby="built-in-title">
+          <h2 id="built-in-title">Try Windows Text size first</h2>
+          <p>In Windows 11, open <strong>Settings → Accessibility → Text size</strong>. Move the slider until the sample is comfortable, select <strong>Apply</strong>, then check File Explorer and other apps you use. This is a built-in way to make text larger without changing the display’s scale.</p>
+          <p>Text-size support can vary between apps and interface components. If the file and folder labels you care about remain too small, compare this setting with display scaling before deciding which trade-off suits your screen.</p>
+        </section>
+
+        <section aria-labelledby="compare-title">
+          <h2 id="compare-title">Text size and display scaling change different things</h2>
+          <div class="guide-callout">
+            <ul>
+              <li><strong>Accessibility → Text size</strong> enlarges text in Windows and apps that honor that setting.</li>
+              <li><strong>Settings → System → Display → Scale</strong> scales more of the interface, including text, controls and layout. It may make the whole desktop feel larger.</li>
+              <li><strong>Font Size Tweak</strong> adjusts selected classic Windows font metrics for the current user. It can offer more targeted control where a component uses those metrics.</li>
+            </ul>
+          </div>
+          <p>For a high-resolution display, Windows scaling may be the most comfortable option if many interface elements are too small. If the overall layout already feels right and only particular text needs adjustment, try the text-size setting first; a supported classic metric may offer a narrower adjustment for some labels.</p>
+          <p>For a fuller comparison of the Windows options, read <a href="/font-size-tweak/guides/text-size-vs-display-scaling/">Windows text size vs display scaling</a>.</p>
+        </section>
+
+        <section aria-labelledby="tweak-title">
+          <h2 id="tweak-title">Adjust supported file and folder labels</h2>
+          <p>Font Size Tweak’s <strong>Icons</strong> control changes the classic Windows <code>IconFont</code> metric. That metric is used by desktop icon labels and supported File Explorer file and folder labels on compatible Windows builds. It changes label text size; it does <strong>not</strong> resize the icon graphics.</p>
+          <ol class="guide-steps">
+            <li><a href="https://github.com/uxillary/font-size-tweak/releases/latest">Download the latest free release</a> and extract the downloaded archive.</li>
+            <li>Run <code>FontSizeTweak.exe</code>. The portable app does not require installation or administrator access.</li>
+            <li>Under <strong>Individual Adjustment</strong>, choose <strong>Icons</strong>, set a comfortable size using the available controls, and apply it.</li>
+            <li>Check the labels that matter to you. Sign out of Windows and back in if a compatible interface has not refreshed.</li>
+          </ol>
+          <p>The app keeps a backup of the original values captured before its first change. Its restore action returns those captured settings; it does not assume or write hard-coded Microsoft defaults.</p>
+        </section>
+
+        <aside class="guide-cta" aria-labelledby="guide-cta-title">
+          <p class="eyebrow">Free · Open source · Windows 10/11</p>
+          <h2 id="guide-cta-title">Need more control over supported labels?</h2>
+          <p>Font Size Tweak lets you adjust supported classic Windows font metrics individually, without changing display scaling. Results depend on which metrics a Windows component uses.</p>
+          <a class="button primary" href="https://github.com/uxillary/font-size-tweak/releases/latest"><i class="fa-solid fa-download" aria-hidden="true"></i> Download Font Size Tweak — Free</a>
+        </aside>
+
+        <section aria-labelledby="limits-title">
+          <h2 id="limits-title">What it changes—and what it cannot</h2>
+          <p>The app updates the current user’s classic font metrics for title bars, menus, message boxes, icons and status bars. Windows also has newer and app-specific interfaces that do not use these metrics. File Explorer behavior can vary across Windows components and builds, so the Icons setting will not necessarily change every label everywhere.</p>
+          <p>Font Size Tweak changes font size only. It does not change font family, boldness, icon graphics, app-specific text settings or display scaling.</p>
+        </section>
+
+        <section aria-labelledby="troubleshoot-title">
+          <h2 id="troubleshoot-title">If the labels do not look different</h2>
+          <ul>
+            <li>Confirm you adjusted <strong>Icons</strong>, then apply the change.</li>
+            <li>Sign out of Windows and back in to refresh interfaces that have not picked up the new value.</li>
+            <li>Check more than one compatible label. A modern or custom-rendered component may not use the classic metric.</li>
+            <li>If the overall desktop is too small, review Windows display scaling; changing a font metric does not resize controls or layout.</li>
+          </ul>
+          <p>For all supported controls and limitations, see the <a href="/font-size-tweak/#how-it-works">Font Size Tweak overview</a>.</p>
+          <p>If you applied a change and still cannot see it, follow the <a href="/font-size-tweak/guides/windows-font-size-changes-not-appearing/">Windows font-size troubleshooting steps</a>.</p>
+        </section>
+
+        <nav class="related-guides" aria-label="Related information">
+          <h2>Related information</h2>
+          <ul>
+            <li><a href="/font-size-tweak/">Font Size Tweak: features, limitations and free download</a></li>
+            <li><a href="/font-size-tweak/guides/">All Windows text-size guides</a></li>
+          </ul>
+        </nav>
+      </div>
+    </article>
+  </main>
+  <footer><div class="container footer-inner"><a class="brand" href="/font-size-tweak/"><img src="../../logo.png" width="30" height="30" alt=""><span>Font Size Tweak</span></a><p>Open source under the MIT licence. No cookies or trackers.</p><a href="#main">Back to top ↑</a></div></footer>
+</body>
+</html>

@@ -140,6 +140,7 @@ footer a { font-size: .88rem; }
 a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
 @media (max-width: 850px) {
   .site-header nav a:not(.nav-github) { display: none; }
+  .site-header nav a.nav-guides { display: inline-flex; }
   .hero-grid { grid-template-columns: 1fr; }
   .hero-copy { max-width: 720px; }
   .app-shot { justify-self: center; max-width: 330px; transform: none; }
@@ -154,7 +155,9 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outli
 @media (max-width: 560px) {
   :root { font-size: 16px; }
   .container { width: min(calc(100% - 1.5rem), var(--max)); }
-  .nav-wrap { min-height: 62px; }
+  .nav-wrap { min-height: 62px; gap: .5rem; }
+  .site-header nav { gap: .75rem; }
+  .site-header nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: .82rem; }
   .brand img { width: 32px; height: 32px; }
   .hero { padding: 2.5rem 0 3.25rem; }
   h1 { font-size: clamp(2.2rem, 12vw, 3.15rem); line-height: 1.08; }

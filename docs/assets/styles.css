@@ -157,7 +157,7 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outli
   .container { width: min(calc(100% - 1.5rem), var(--max)); }
   .nav-wrap { min-height: 62px; gap: .5rem; }
   .site-header nav { gap: .75rem; }
-  .site-header nav a { font-size: .82rem; }
+  .site-header nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: .82rem; }
   .brand img { width: 32px; height: 32px; }
   .hero { padding: 2.5rem 0 3.25rem; }
   h1 { font-size: clamp(2.2rem, 12vw, 3.15rem); line-height: 1.08; }

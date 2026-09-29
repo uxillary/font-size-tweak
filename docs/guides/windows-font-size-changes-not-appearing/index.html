@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Windows Font Size Changes Not Appearing? | Font Size Tweak</title>
+  <meta name="description" content="Check the Windows setting, font metric and interface you changed, then learn when to refresh, switch sizing methods or restore captured settings.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://uxillary.github.io/font-size-tweak/guides/windows-font-size-changes-not-appearing/">
+  <link rel="icon" href="../../icon.ico" sizes="any">
+  <link rel="icon" href="../../logo.png" type="image/png" sizes="256x256">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="../../assets/styles.css">
+  <link rel="stylesheet" href="../../assets/guides.css">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Font Size Tweak">
+  <meta property="og:title" content="Windows Font Size Changes Not Appearing? | Font Size Tweak">
+  <meta property="og:description" content="Check the Windows setting, font metric and interface you changed, then learn when to refresh, switch sizing methods or restore captured settings.">
+  <meta property="og:url" content="https://uxillary.github.io/font-size-tweak/guides/windows-font-size-changes-not-appearing/">
+  <meta property="og:image" content="https://uxillary.github.io/font-size-tweak/assets/screenshot1.png">
+  <meta property="og:image:alt" content="Font Size Tweak controls for supported Windows font metrics">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Windows Font Size Changes Not Appearing? | Font Size Tweak">
+  <meta name="twitter:description" content="Check the Windows setting, font metric and interface you changed, then learn when to refresh, switch sizing methods or restore captured settings.">
+  <meta name="twitter:image" content="https://uxillary.github.io/font-size-tweak/assets/screenshot1.png">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Font Size Tweak","item":"https://uxillary.github.io/font-size-tweak/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://uxillary.github.io/font-size-tweak/guides/"},{"@type":"ListItem","position":3,"name":"Font-size changes not appearing","item":"https://uxillary.github.io/font-size-tweak/guides/windows-font-size-changes-not-appearing/"}]}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="/font-size-tweak/" aria-label="Font Size Tweak home"><img src="../../logo.png" width="36" height="36" alt=""><span>Font Size Tweak</span></a>
+      <nav aria-label="Primary navigation"><a href="/font-size-tweak/">Home</a><a class="nav-guides" href="/font-size-tweak/guides/">Guides</a><a class="nav-github" href="https://github.com/uxillary/font-size-tweak"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></nav>
+    </div>
+  </header>
+  <main id="main" class="guide-main">
+    <article class="container guide-container guide-article">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/font-size-tweak/">Font Size Tweak</a></li><li><a href="/font-size-tweak/guides/">Guides</a></li><li aria-current="page">Font-size changes not appearing</li></ol></nav>
+      <header class="guide-heading">
+        <p class="eyebrow">Windows 11 · Troubleshooting</p>
+        <h1>Windows font-size changes not appearing</h1>
+        <p class="lede">First confirm that you changed and applied the right setting. Some compatible Windows interfaces update straight away; others need you to sign out and back in. A modern or custom-rendered component may not use the classic font metric you changed at all.</p>
+      </header>
+
+      <div class="guide-prose">
+        <section aria-labelledby="check-title">
+          <h2 id="check-title">Work through these checks in order</h2>
+          <ol class="guide-steps">
+            <li><strong>Confirm the setting was applied.</strong> For Windows Accessibility → Text size, move the slider and select <strong>Apply</strong>. For Display → Scale, check that you changed the intended display. In Font Size Tweak, look for its saved/status message after choosing a size and applying it.</li>
+            <li><strong>Check which Font Size Tweak metric you changed.</strong> The five controls affect different categories. If you changed Icons but expected menu text to change, choose Menus instead. Use the reference below.</li>
+            <li><strong>Check whether the affected interface uses that metric.</strong> Classic Windows components may use these settings; newer Windows UI and applications that draw their own text may not. Test a compatible area before concluding the app failed.</li>
+            <li><strong>Give the interface a chance to refresh.</strong> Some changes may appear immediately. If the affected area still looks the same, sign out of Windows and sign back in, then check again. The app documentation recommends this for compatible interfaces that do not refresh immediately.</li>
+            <li><strong>Choose a broader Windows setting if that better matches the problem.</strong> For text across Windows, try Accessibility → Text size. If the whole interface is too small, consider Display → Scale.</li>
+            <li><strong>Restore captured settings if you want to undo the app’s change.</strong> Use Restore for the selected metric or restore all original settings; see the restore section below.</li>
+          </ol>
+          <p>A sign-out can refresh compatible UI, but it cannot make a component use a font metric it ignores. The repository documentation does not establish that restarting Explorer or rebooting Windows is required.</p>
+        </section>
+
+        <section aria-labelledby="metrics-title">
+          <h2 id="metrics-title">Match the control to the text</h2>
+          <p>Font Size Tweak changes five classic, per-user Windows font metrics. These are the areas each control is intended to affect; a particular app or component may not use the metric.</p>
+          <dl class="metric-reference">
+            <div><dt>Title Bar</dt><dd>Classic window title text, such as title bars in Notepad and Explorer.</dd></div>
+            <div><dt>Menus</dt><dd>Classic menu bars and right-click menus.</dd></div>
+            <div><dt>Message Boxes</dt><dd>Some classic message dialogs and prompts.</dd></div>
+            <div><dt>Icons</dt><dd>Desktop icon labels and supported File Explorer file/folder labels. This changes label text, not icon graphics.</dd></div>
+            <div><dt>Status Bar</dt><dd>Status text in compatible legacy interfaces.</dd></div>
+          </dl>
+          <p>For example, if Explorer file and folder names are the concern, the Icons metric is the relevant control on supported builds. The <a href="/font-size-tweak/guides/file-explorer-text-size/">File Explorer text-size guide</a> explains the Windows options and app steps in more detail.</p>
+        </section>
+
+        <section aria-labelledby="compat-title">
+          <h2 id="compat-title">Why a correctly applied change may still have no effect</h2>
+          <p>Font Size Tweak edits classic font metrics in the current Windows user’s settings. Newer Windows interfaces can use different rendering systems, and individual applications can draw their own text. Those components may ignore these metrics even after you sign out and sign back in.</p>
+          <p>Behavior can differ by component and Windows build. That means no visible change in one dialog does not by itself show that the app failed; it may mean that dialog does not use the selected metric. The app is not a universal font controller, and its changes do not resize icon graphics, app layouts or display scaling.</p>
+          <div class="guide-callout">
+            <p><strong>Quick distinction:</strong> if compatible classic text changes after applying and signing back in, the setting took effect. If only one modern or custom app ignores it, that component may use its own text rendering. If text broadly needs to be larger, use Windows’ own sizing controls.</p>
+          </div>
+        </section>
+
+        <section aria-labelledby="wrong-setting-title">
+          <h2 id="wrong-setting-title">When another setting is a better fit</h2>
+          <ul>
+            <li><strong>“I changed Icons but menu text did not change.”</strong> Menus is the relevant Font Size Tweak metric for classic menus.</li>
+            <li><strong>“The icon pictures stayed the same size.”</strong> That is expected: the Icons metric affects supported label text, not icon graphics.</li>
+            <li><strong>“Everything on my 4K display is tiny.”</strong> Display → Scale may be a better fit because it enlarges apps and more of the interface, not just supported text.</li>
+            <li><strong>“Text throughout Windows is difficult to read.”</strong> Try the built-in Accessibility → Text size setting first.</li>
+          </ul>
+          <p>For a step-by-step comparison, see <a href="/font-size-tweak/guides/text-size-vs-display-scaling/">Windows text size vs display scaling</a>.</p>
+        </section>
+
+        <section aria-labelledby="restore-title">
+          <h2 id="restore-title">Restore the settings Font Size Tweak captured</h2>
+          <p>If you no longer want a change, are unsure which metric caused an unwanted result, or want to return to the state captured by the app, use <strong>Restore</strong> for the selected metric or <strong>Restore Original Settings</strong> for all five.</p>
+          <p>Font Size Tweak saves the original values it captures before its first registry change. Restore writes those saved values back; it does <strong>not</strong> guess or write assumed Microsoft “default” values. The backup remains in your Windows user profile and is not replaced on later launches.</p>
+          <p><strong>Undo Last Change</strong> is different: it reverses one latest apply or restore operation using an in-memory snapshot. It is one-level and does not survive closing the app.</p>
+        </section>
+
+        <aside class="guide-cta" aria-labelledby="guide-cta-title">
+          <p class="eyebrow">Free · Open source · Windows 10/11</p>
+          <h2 id="guide-cta-title">Need to adjust a supported metric?</h2>
+          <p>Font Size Tweak lets you choose among supported classic Windows font categories. It cannot make every modern or app-specific interface follow those metrics.</p>
+          <a class="button primary" href="https://github.com/uxillary/font-size-tweak/releases/latest"><i class="fa-solid fa-download" aria-hidden="true"></i> Download Font Size Tweak — Free</a>
+        </aside>
+
+        <nav class="related-guides" aria-label="Related information">
+          <h2>Related information</h2>
+          <ul>
+            <li><a href="/font-size-tweak/guides/file-explorer-text-size/">Make File Explorer and folder-name text larger</a></li>
+            <li><a href="/font-size-tweak/guides/text-size-vs-display-scaling/">Compare Windows text size and display scaling</a></li>
+            <li><a href="/font-size-tweak/guides/">All Windows text-size guides</a></li>
+            <li><a href="/font-size-tweak/">Font Size Tweak: supported features and free download</a></li>
+          </ul>
+        </nav>
+      </div>
+    </article>
+  </main>
+  <footer><div class="container footer-inner"><a class="brand" href="/font-size-tweak/"><img src="../../logo.png" width="30" height="30" alt=""><span>Font Size Tweak</span></a><p>Open source under the MIT licence. No cookies or trackers.</p><a href="#main">Back to top ↑</a></div></footer>
+</body>
+</html>

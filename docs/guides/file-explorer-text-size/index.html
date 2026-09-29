@@ -38,11 +38,7 @@
   <main id="main" class="guide-main">
     <article class="container guide-container guide-article">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/font-size-tweak/">Font Size Tweak</a></li><li><a href="/font-size-tweak/guides/">Guides</a></li><li aria-current="page">File Explorer text size</li></ol></nav>
-      <header class="guide-heading">
-        <p class="eyebrow">Windows 11 · File Explorer</p>
-        <h1>Make File Explorer and folder-name text larger</h1>
-        <p class="lede">If file and folder names are hard to read, first try Windows’ text-size setting. If you need more targeted control over supported classic labels, Font Size Tweak can adjust the label font metric without enlarging the icon graphics.</p>
-      </header>
+      <header class="guide-heading guide-heading--visual"><div class="guide-heading__copy"><p class="eyebrow">Windows 11 · File Explorer</p><h1>Make File Explorer and folder-name text larger</h1><p class="lede">If file and folder names are hard to read, first try Windows’ text-size setting. If you need more targeted control over supported classic labels, Font Size Tweak can adjust the label font metric without enlarging the icon graphics.</p></div><div class="guide-heading__visual" aria-hidden="true"><div class="guide-specimen"><div class="guide-specimen__bar"><i class="fa-regular fa-folder-open"></i> This PC <span>›</span> Projects</div><div class="guide-specimen__rows"><div class="guide-specimen__row"><i class="fa-regular fa-folder"></i> Design files</div><div class="guide-specimen__row guide-specimen__row--focus"><i class="fa-regular fa-folder"></i> Current project <span>label text</span></div><div class="guide-specimen__row"><i class="fa-regular fa-file-lines"></i> Readme.txt</div></div><p class="guide-specimen__caption">The folder and file names are the text being adjusted.</p></div></div></header>
 
       <div class="guide-prose">
         <section aria-labelledby="built-in-title">
@@ -66,7 +62,7 @@
 
         <section aria-labelledby="tweak-title">
           <h2 id="tweak-title">Adjust supported file and folder labels</h2>
-          <p>Font Size Tweak’s <strong>Icons</strong> control changes the classic Windows <code>IconFont</code> metric. That metric is used by desktop icon labels and supported File Explorer file and folder labels on compatible Windows builds. It changes label text size; it does <strong>not</strong> resize the icon graphics.</p>
+          <p>Font Size Tweak’s <strong>Icons</strong> control changes the classic Windows <code>IconFont</code> metric. That metric is used by desktop icon labels and supported File Explorer file and folder labels on compatible Windows builds. It changes label text size; it does <strong>not</strong> resize the icon graphics.</p><div class="guide-before-after" aria-label="Illustrative comparison of folder label text size"><article><h3>Before</h3><div class="guide-before-after__sample"><i class="fa-regular fa-folder" aria-hidden="true"></i><span>Folder name</span></div></article><article><h3>After</h3><div class="guide-before-after__sample guide-before-after__sample--after"><i class="fa-regular fa-folder" aria-hidden="true"></i><span>Folder name</span></div></article></div><p class="guide-caption">Illustrative only: the label text grows; the folder icon stays the same size. Actual results vary by Windows component.</p>
           <ol class="guide-steps">
             <li><a href="https://github.com/uxillary/font-size-tweak/releases/latest">Download the latest free release</a> and extract the downloaded archive.</li>
             <li>Run <code>FontSizeTweak.exe</code>. The portable app does not require installation or administrator access.</li>

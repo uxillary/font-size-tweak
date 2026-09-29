@@ -38,16 +38,12 @@
   <main id="main" class="guide-main">
     <article class="container guide-container guide-article">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="/font-size-tweak/">Font Size Tweak</a></li><li><a href="/font-size-tweak/guides/">Guides</a></li><li aria-current="page">Font-size changes not appearing</li></ol></nav>
-      <header class="guide-heading">
-        <p class="eyebrow">Windows 11 · Troubleshooting</p>
-        <h1>Windows font-size changes not appearing</h1>
-        <p class="lede">First confirm that you changed and applied the right setting. Some compatible Windows interfaces update straight away; others need you to sign out and back in. A modern or custom-rendered component may not use the classic font metric you changed at all.</p>
-      </header>
+      <header class="guide-heading guide-heading--visual"><div class="guide-heading__copy"><p class="eyebrow">Windows 11 · Troubleshooting</p><h1>Windows font-size changes not appearing</h1><p class="lede">First confirm that you changed and applied the right setting. Some compatible Windows interfaces update straight away; others need you to sign out and back in. A modern or custom-rendered component may not use the classic font metric you changed at all.</p></div><div class="guide-heading__visual guide-diagnostic" aria-hidden="true"><ol class="guide-steps"><li>Change applied?</li><li>Correct metric?</li><li>Interface uses it?</li><li>Refresh or sign out?</li><li>Still unchanged? Check Text size, Scale or compatibility.</li></ol></div></header>
 
       <div class="guide-prose">
         <section aria-labelledby="check-title">
           <h2 id="check-title">Work through these checks in order</h2>
-          <ol class="guide-steps">
+          <ol class="guide-steps guide-diagnostic">
             <li><strong>Confirm the setting was applied.</strong> For Windows Accessibility → Text size, move the slider and select <strong>Apply</strong>. For Display → Scale, check that you changed the intended display. In Font Size Tweak, look for its saved/status message after choosing a size and applying it.</li>
             <li><strong>Check which Font Size Tweak metric you changed.</strong> The five controls affect different categories. If you changed Icons but expected menu text to change, choose Menus instead. Use the reference below.</li>
             <li><strong>Check whether the affected interface uses that metric.</strong> Classic Windows components may use these settings; newer Windows UI and applications that draw their own text may not. Test a compatible area before concluding the app failed.</li>
@@ -62,11 +58,11 @@
           <h2 id="metrics-title">Match the control to the text</h2>
           <p>Font Size Tweak changes five classic, per-user Windows font metrics. These are the areas each control is intended to affect; a particular app or component may not use the metric.</p>
           <dl class="metric-reference">
-            <div><dt>Title Bar</dt><dd>Classic window title text, such as title bars in Notepad and Explorer.</dd></div>
-            <div><dt>Menus</dt><dd>Classic menu bars and right-click menus.</dd></div>
-            <div><dt>Message Boxes</dt><dd>Some classic message dialogs and prompts.</dd></div>
-            <div><dt>Icons</dt><dd>Desktop icon labels and supported File Explorer file/folder labels. This changes label text, not icon graphics.</dd></div>
-            <div><dt>Status Bar</dt><dd>Status text in compatible legacy interfaces.</dd></div>
+            <div><dt><i class="fa-regular fa-window-maximize" aria-hidden="true"></i>Title Bar</dt><dd>Classic window title text, such as title bars in Notepad and Explorer.</dd></div>
+            <div><dt><i class="fa-solid fa-bars" aria-hidden="true"></i>Menus</dt><dd>Classic menu bars and right-click menus.</dd></div>
+            <div><dt><i class="fa-regular fa-message" aria-hidden="true"></i>Message Boxes</dt><dd>Some classic message dialogs and prompts.</dd></div>
+            <div><dt><i class="fa-regular fa-folder" aria-hidden="true"></i>Icons</dt><dd>Desktop icon labels and supported File Explorer file/folder labels. This changes label text, not icon graphics.</dd></div>
+            <div><dt><i class="fa-solid fa-grip-lines" aria-hidden="true"></i>Status Bar</dt><dd>Status text in compatible legacy interfaces.</dd></div>
           </dl>
           <p>For example, if Explorer file and folder names are the concern, the Icons metric is the relevant control on supported builds. The <a href="/font-size-tweak/guides/file-explorer-text-size/">File Explorer text-size guide</a> explains the Windows options and app steps in more detail.</p>
         </section>

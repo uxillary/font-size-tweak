@@ -86,20 +86,38 @@
 .guide-before-after__sample span { line-height:1.25; }
 .guide-before-after__sample--after span { font-size:1.2rem; }
 .guide-caption { margin:-.4rem 0 1.25rem; color:var(--muted); font-size:.83rem; }
-.guide-hub-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
-.guide-hub-grid .guide-card:last-child:nth-child(odd) { grid-column:1 / -1; }
+.guide-hub-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
 .guide-diagnostic { max-width:720px; margin:0 auto; padding:1.1rem 1.2rem .2rem; border:1px solid var(--border); border-radius:14px; background:linear-gradient(135deg,var(--surface),var(--bg)); }
 .guide-diagnostic .guide-steps li { padding-bottom:1rem; }
+.comparison-table-wrap { max-width:100%; overflow-x:auto; border:1px solid var(--border); border-radius:12px; background:var(--surface); }
+.comparison-table-wrap:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.comparison-table { width:100%; min-width:660px; border-collapse:collapse; text-align:left; }
+.comparison-table th,.comparison-table td { padding:.9rem 1rem; vertical-align:top; border-bottom:1px solid var(--border); }
+.comparison-table thead th { color:var(--accent-soft); background:var(--surface-2); font-size:.92rem; }
+.comparison-table tbody th { width:19%; color:var(--text); font-size:.9rem; }
+.comparison-table td { color:var(--muted); font-size:.92rem; }
+.comparison-table tr:last-child th,.comparison-table tr:last-child td { border-bottom:0; }
+.choice-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin-top:3rem; }
+.choice-card { min-width:0; padding:clamp(1.1rem,3vw,1.6rem); border:1px solid var(--border); border-radius:14px; background:var(--surface-2); }
+.choice-card h2 { margin:.3rem 0 .7rem; }
+.choice-card p,.choice-card li { color:var(--muted); }
+.choice-card ul { padding-left:1.2rem; }
+.choice-card li + li { margin-top:.4rem; }
+.choice-card .button { min-height:44px; margin-top:.4rem; }
+.source-list li + li { margin-top:.55rem; }
 @media (max-width:760px) {
  .guide-heading--visual { grid-template-columns:1fr; gap:1.6rem; }
  .guide-heading__visual { max-width:480px; width:100%; }
  .guide-comparison { grid-template-columns:1fr; }
- .guide-hub-grid { grid-template-columns:1fr; }
- .guide-hub-grid .guide-card:last-child:nth-child(odd) { grid-column:auto; }
+ .guide-hub-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .choice-grid { grid-template-columns:1fr; }
 }
 @media (max-width:560px) {
  .metric-reference { grid-template-columns:1fr; }
  .guide-before-after { grid-template-columns:1fr; }
  .guide-diagnostic { padding-inline:.75rem; }
  .guide-steps li { padding-left:2.8rem; }
+ .guide-hub-grid { grid-template-columns:1fr; }
+ .comparison-table { min-width:590px; }
+ .comparison-table th,.comparison-table td { padding:.75rem; }
 }

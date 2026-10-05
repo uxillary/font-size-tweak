@@ -1,0 +1,22 @@
+.decision-tool { max-width: 860px; margin: 0 auto 3.5rem; padding: clamp(1.1rem, 3vw, 2rem); border: 1px solid var(--border); border-radius: 16px; background: var(--surface); }
+.decision-tool fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+.decision-tool legend { font-size: clamp(1.35rem, 3vw, 1.8rem); font-weight: 750; }
+.decision-hint { margin: .45rem 0 1.2rem; color: var(--muted); }
+.decision-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .65rem; }
+.decision-options label { display: flex; min-width: 0; align-items: center; gap: .7rem; min-height: 3.2rem; padding: .7rem .8rem; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; }
+.decision-options label:has(input:checked) { border-color: var(--accent); background: rgb(85 230 165 / 6%); }
+.decision-options input { flex: none; width: 1.1rem; height: 1.1rem; accent-color: var(--accent); }
+.decision-options label span { overflow-wrap: anywhere; }
+.decision-options input:focus-visible, .decision-result:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.decision-result { margin-top: 1.4rem; padding: 1.25rem 1.4rem; border: 1px solid rgb(85 230 165 / 34%); border-radius: 12px; background: var(--surface-2); }
+.decision-result .eyebrow { margin: 0 0 .4rem; }
+.decision-result h2 { margin: 0 0 .6rem; }
+.decision-result > p:not(.eyebrow):not(.decision-path):not(.decision-links) { color: var(--muted); }
+.decision-path { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem; margin: 1.1rem 0; padding: .8rem; border: 1px solid var(--border); border-radius: 9px; background: var(--bg); }
+.decision-path > span[aria-hidden="true"] { color: var(--accent); }
+.decision-path strong { color: var(--accent-soft); }
+.decision-links { margin: 0; }
+.decision-links a + a { margin-left: 1rem; }
+.decision-noscript { margin: 1rem 0 0; padding: .8rem 1rem; border-left: 3px solid var(--blue); background: var(--surface-2); color: var(--muted); }
+@media (max-width: 760px) { .decision-options { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .decision-options { grid-template-columns: 1fr; } .decision-tool { padding: 1rem; } }

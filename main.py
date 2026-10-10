@@ -165,6 +165,11 @@ except ValueError as error:
 app = ttk.Window(title="Font Size Tweak", themename="darkly", resizable=(False, False))
 app.geometry("570x650")
 app.option_add("*Font", ("Segoe UI", 10))
+try:
+    app_brand_logo = tk.PhotoImage(file=resource_path("fontsizetweak-logo-nobg.png"))
+    app.iconphoto(True, app_brand_logo)
+except tk.TclError:
+    app_brand_logo = None
 
 quick_size = tk.StringVar(value=str(START_SIZE))
 individual_size = tk.StringVar(value=str(START_SIZE))
@@ -489,9 +494,12 @@ def undo_last_change():
 
 
 # Compact dark interface.
-ttk.Label(
-    app, text="Font Size Tweak", font=("Segoe UI", 17, "bold"), bootstyle="light"
-).pack(pady=(14, 1))
+if app_brand_logo:
+    ttk.Label(app, image=app_brand_logo).pack(pady=(9, 2))
+else:
+    ttk.Label(
+        app, text="Font Size Tweak", font=("Segoe UI", 17, "bold"), bootstyle="light"
+    ).pack(pady=(14, 1))
 ttk.Label(
     app,
     text="Adjust supported Windows text without changing display scaling",
